@@ -1,0 +1,139 @@
+.booking {
+    background-image: url("./assets/images/book_session_background.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.booking__work-img {
+    position: absolute;
+    left: 0;
+    top: -63px;
+}
+
+.booking__steps {
+    padding: 54px 55px 0 721px;
+}
+
+.title--booking {
+    max-width: 400px;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.title--booking::after {
+    position: absolute;
+    content: "";
+    width: 402px;
+    height: 12px;
+    background-color: var(--assent-color);
+    left: 0;
+    bottom: -22px;
+}
+
+.booking__list {
+    padding-left: 0;
+}
+
+.booking__list li {
+    position: relative;
+    padding-left: 34px;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32.4px;
+    letter-spacing: 0.01em;
+}
+
+.booking__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 13px;
+    height: 13px;
+    rotate: 45deg;
+    background-color: var(--main-text-color);
+}
+
+.common__link--booking {
+    padding: 20px 40px;
+    margin-top: 40px;
+}
+
+.booking__design {
+    margin-top: 175px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.title--design {
+    max-width: 629px;
+    margin-bottom: 76px;
+}
+
+.booking__design__steps {
+    display: flex;
+    gap: 93px;
+    margin-bottom: 72px;
+}
+
+.booking__design__steps h3 {
+    font-size: 68px;
+    font-weight: 900;
+    line-height: 74.8px;
+    letter-spacing: 0.01em;
+    color: var(--added-color);
+    margin-bottom: 16px;
+}
+
+.booking__design__steps h4 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 33.6px;
+    letter-spacing: 0.01em;
+    max-width: 419px;
+    margin-bottom: 12px;
+}
+
+.booking__design__steps p {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 27px;
+    letter-spacing: 0.01em;
+    max-width: 440px;
+}
+
+.common__link--design {
+    margin-top: 20px;
+    margin-bottom: 155px;
+}
+
+.booking__design__angle {
+    position: absolute;
+    z-index: 1;
+}
+
+.booking__design__angle--top-left {
+    top: -60px;
+    left: 164px;
+}
+
+.booking__design__angle--top-right {
+    top: -60px;
+    right: 164px;
+}
+
+.booking__design__angle--bottom-left {
+    bottom: 60px;
+    left: 164px;
+}
+
+.booking__design__angle--bottom-right {
+    bottom: 60px;
+    right: 164px;
+}
