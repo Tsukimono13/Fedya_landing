@@ -1,0 +1,47 @@
+.projects {
+    background-image: url("./assets/images/background_projects.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.projects__content {
+    display: flex;
+    gap: 120px;
+    padding: 80px 0 82px 164px;
+    align-items: center;
+}
+
+.projects__details {
+    padding-top: 52px;
+}
+
+.title {
+    font-family: 'Hatsch Sans', sans-serif;
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 59.8px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+}
+
+.title--projects {
+    margin-bottom: 28px;
+}
+
+.projects__details p {
+    max-width: 552px;
+}
+
+.projects__details p:nth-child(2) {
+    margin-bottom: 12px;
+}
+
+.common__link--projects {
+    margin-top: 60px;
+}
+
+.projects__carousel__work {
+    border: 2px solid var(--main-text-color);
+    clip-path: polygon(10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%, 0 10%);
+}
