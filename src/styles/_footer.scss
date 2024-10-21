@@ -1,0 +1,36 @@
+.footer {
+    background-image: url("/assets/images/background_footer.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 93px;
+}
+
+.title--footer {
+    margin-bottom: 56px;
+    text-align: center;
+}
+
+.title--footer span {
+    display: block;
+}
+
+.footer__links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 60px 0;
+}
+
+.footer__creators {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    align-items: center;
+}
+
+.footer__creators p {}

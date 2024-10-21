@@ -12,223 +12,347 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
-  <body>
-    <body class="main_body">
-      <div class="container">
-        <!-- Header -->
-        <header id="header">
-          <div class="loading" />
-          <nav class="menu menu--left">
-            <button class="menu__button menu__button--faq">FAQ</button>
-            <button class="menu__button menu__button--session">
-              About Sessions
-            </button>
-            <button class="menu__button menu__button--me">About Me</button>
-            <button class="menu__button menu__button--project">
-              My projects
-            </button>
-          </nav>
+  <body class="main_body">
+    <div class="container">
+      <!-- Header -->
+      <header id="header">
+        <div class="loading"></div>
+        <nav class="menu menu--left">
+          <button class="menu__button menu__button--faq">FAQ</button>
+          <button class="menu__button menu__button--session">
+            About Sessions
+          </button>
+          <button class="menu__button menu__button--me">About Me</button>
+          <button class="menu__button menu__button--project">
+            My Projects
+          </button>
+        </nav>
 
-          <nav class="menu menu--right">
-            <ul>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  title="Instagram"
-                  class="menu__link menu__link--inst"
-                >
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  title="Whatsapp"
-                  class="menu__link menu__link--watsapp"
-                >
-                </a>
-              </li>
-              <li>
-                <a
-                  href=""
-                  target="_blank"
-                  title="Telegram"
-                  class="menu__link menu__link--tg"
-                >
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
+        <nav class="menu menu--right">
+          <ul>
+            <li>
+              <a
+                href="#"
+                target="_blank"
+                title="Instagram"
+                class="menu__link menu__link--inst"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                target="_blank"
+                title="Whatsapp"
+                class="menu__link menu__link--watsapp"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="#"
+                target="_blank"
+                title="Telegram"
+                class="menu__link menu__link--tg"
+              ></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-        <!-- Main -->
-        <main class="main">
-          <section class="presentation">
-            <img
-              src="assets/icons/Logo.svg"
-              alt="logo"
-              class="presentation__logo"
-            />
-            <div class="presentation__details">
-              <div class="presentation__name">
-                <img src="assets/icons/Theo_Ivanov.svg" alt="Theo Ivanov" />
-                <div class="presentation__name__details">
-                  <p>Tattoo Artist</p>
-                  <p>Seattle | New York</p>
-                </div>
-                <a href="#" class="common__link common__link--presentation"
-                  >CONTACT ME NOW</a
-                >
+      <!-- Main -->
+      <main class="main">
+        <section class="presentation">
+          <img
+            src="assets/icons/Logo.svg"
+            alt="logo"
+            class="presentation__logo"
+          />
+          <div class="presentation__details">
+            <div class="presentation__name">
+              <img src="assets/icons/Theo_Ivanov.svg" alt="Theo Ivanov" />
+              <div class="presentation__name__details">
+                <p>Tattoo Artist</p>
+                <p>Seattle | New York</p>
               </div>
-              <img src="assets/images/fedor_photo.png" alt="Theo Ivanov" />
+              <a href="#" class="common__link common__link--presentation"
+                >CONTACT ME NOW</a
+              >
             </div>
-            <div class="presentation__tags">
-              <p>Tattoo</p>
-              <p>Darkness</p>
-              <p>Horror</p>
-              <p>Style</p>
-              <p>Tattoo</p>
-              <p>Darkness</p>
-              <p>Horror</p>
-              <p>Style</p>
-              <p>Tattoo</p>
-              <p>Darkness</p>
+            <img src="assets/images/fedor_photo.png" alt="Theo Ivanov" />
+          </div>
+          <div class="presentation__tags">
+            <p>Tattoo</p>
+            <p>Darkness</p>
+            <p>Horror</p>
+            <p>Style</p>
+          </div>
+        </section>
+
+        <!-- My Projects -->
+        <section class="projects">
+          <div class="projects__content">
+            <div class="projects__details">
+              <h2 class="title title--projects">My Projects</h2>
+              <p class="projects__details__text">
+                People come to me for high-quality realistic tattoos.
+              </p>
+              <p>
+                Over many years, I've created my own unique style that has no
+                analogs. It combines the depth and mystery of dark themes with
+                meticulous and extra-detailed b&g realism techniques.
+              </p>
+              <a href="#" class="common__link common__link--projects"
+                >SEE MORE WORK</a
+              >
             </div>
-          </section>
-          <!-- My Projects -->
-          <section class="projects">
-            <div class="projects__content">
-              <div class="projects__details">
-                <h2 class="title title--projects">My Projects </h2>
-                <p class="projects__details__text">
-                  People come to me for high-quality realistic tattoos.
-                </p>
-                <p>
-                  Over many years, I've created my own unique style that has no
-                  analogs. It combines the depth and mystery of dark themes with
-                  meticulous and extra-detailed b&g realism techniques.
-                </p>
-                <a href="#" class="common__link common__link--projects"
-                  >SEE MORE WORK</a
-                >
-              </div>
-              <div class="projects__carousel">
-                <img
-                  src="assets/images/works/work.png"
-                  alt="Work"
-                  class="projects__carousel__work"
-                />
-              </div>
-            </div>
-          </section>
-          <!-- About Me -->
-          <section class="about">
-            <div class="about__content">
-              <div class="about__details">
-                <h2 class="title title--about">About Me</h2>
-                <p>
-                  What’s up, Seattle! I’m Theo, a tattoo artist from Europe. I
-                  now call Washington State my home, but I work all across the
-                  USA.
-                </p>
-                <p>
-                  I'm a professional artist and bring both my ideas and yours to
-                  life on skin. 
-                </p>
-                <p>
-                  Specializing in dark and horror themes, I've developed my own
-                  style over the years that can handle even the most complex
-                  requests from my clients. I've previously been a resident
-                  artist in studios in Russia, Germany, Denmark, and NYC, and
-                  now I'm excited to be here in Seattle!
-                </p>
-                <a href="#" class="about__link"> CONTACT ME NOW </a>
-              </div>
+            <div class="projects__carousel">
               <img
-                src="assets/images/about_Fedya.png"
-                width="586"
-                height="775"
-                alt="Theo Ivanov"
+                src="assets/images/works/work.png"
+                alt="Work"
+                class="projects__carousel__work"
               />
             </div>
-          </section>
-          <!-- How to book a session -->
-          <section class="booking">
-            <img
-              src="assets/images/atWork.png"
-              alt="Theo at work"
-              class="booking__work-img"
-            />
-            <div class="booking__steps">
-              <h2 class="title title--booking">How to book a session</h2>
-              <ul class="booking__list">
-                <li>Text me and describe your idea.</li>
-                <li>Come in for a free personal consultation.</li>
-                <li>Develop the design with me.</li>
-                <li>Pick a date for the session.</li>
-                <li>Get your tattoo.</li>
-                <li>Enjoy the result!</li>
-              </ul>
-              <a href="#" class="common__link common__link--booking">
-                get a free consultation
-              </a>
-            </div>
-            <div class="booking__design">
-              <img src="assets/icons/angles/angle-top-left.svg" alt="decor angle" class="booking__design__angle booking__design__angle--top-left"/>
-              <img src="assets/icons/angles/angle-top-right.svg" alt="decor angle" class="booking__design__angle booking__design__angle--top-right"/>
-              <img src="assets/icons/angles/angle-bottom-left.svg" alt="decor angle" class="booking__design__angle booking__design__angle--bottom-left"/>
-              <img src="assets/icons/angles/angle-bottom-right.svg" alt="decor angle" class="booking__design__angle booking__design__angle--bottom-right"/>
-              <h2 class="title title--design">
-                HOW TO CREATE YOUR OWN UNIQUE DESIGN
-              </h2>
-              <div class="booking__design__steps">
-                <div>
-                  <h3>01</h3>
-                  <h4>DESCRIBE YOUR IDEA IN DETAIL</h4>
-                  <p>
-                    Tell me about your idea and where you want the tattoo.
-                    Mention any characters, objects, or scenes you want to
-                    include in the tattoo.
-                  </p>
-                </div>
-                <div>
-                  <h3>02</h3>
-                  <h4>SEND REFERENCES YOU LIKE</h4>
-                  <p>
-                    These can be photos of similar tattoos, sketches, or
-                    artworks. This will help me understand the style you prefer.
-                  </p>
-                </div>
-              </div>
-              <div class="booking__design__steps">
-                <div>
-                  <h3>03</h3>
-                  <h4>SCHEDULE A PERSONAL
-                    CONSULTATION</h4>
-                  <p>
-                    How much does it cost? It's free! This helps us get better results and communicate more effectively. We’ll understand each other better by discussing the design in prison.
-                  </p>
-                </div>
-                <div>
-                  <h3>04</h3>
-                  <h4>CREATE THE DESIGN WITH ME</h4>
-                  <p>
-                    We will have a one-hour consultation, during which we will lay the foundation for your unique project. 
-                  </p>
-                  <p>We will measure the placement area and create your design on a graphic tablet, considering your anatomy.</p>
-                </div>
-              </div>
-              <a href=" " class="common__link common__link--design">SUBMIT FORM</a>
-              </div>
-            </div>
-          </section>
-        </main>
+          </div>
+        </section>
 
-        <!-- Footer -->
-        <footer id="footer"></footer>
-      </div>
-    </body>
+        <!-- About Me -->
+        <section class="about">
+          <div class="about__content">
+            <div class="about__details">
+              <h2 class="title title--about">About Me</h2>
+              <p>
+                What’s up, Seattle! I’m Theo, a tattoo artist from Europe. I now
+                call Washington State my home, but I work all across the USA.
+              </p>
+              <p>
+                I'm a professional artist and bring both my ideas and yours to
+                life on skin.
+              </p>
+              <p>
+                Specializing in dark and horror themes, I've developed my own
+                style over the years that can handle even the most complex
+                requests from my clients.
+              </p>
+              <a href="#" class="about__link">CONTACT ME NOW</a>
+            </div>
+            <img
+              src="assets/images/about_Fedya.png"
+              width="586"
+              height="775"
+              alt="Theo Ivanov"
+            />
+          </div>
+        </section>
+
+        <!-- How to book a session -->
+        <section class="booking">
+          <img
+            src="assets/images/atWork.png"
+            alt="Theo at work"
+            class="booking__work-img"
+          />
+          <div class="booking__steps">
+            <h2 class="title title--booking">How to book a session</h2>
+            <ul class="booking__list">
+              <li>Text me and describe your idea.</li>
+              <li>Come in for a free personal consultation.</li>
+              <li>Develop the design with me.</li>
+              <li>Pick a date for the session.</li>
+              <li>Get your tattoo.</li>
+              <li>Enjoy the result!</li>
+            </ul>
+            <a href="#" class="common__link common__link--booking"
+              >Get a free consultation</a
+            >
+          </div>
+          <div class="booking__design">
+            <img
+              src="assets/icons/angles/angle-top-left.svg"
+              alt="decor angle"
+              class="booking__design__angle booking__design__angle--top-left"
+            />
+            <img
+              src="assets/icons/angles/angle-top-right.svg"
+              alt="decor angle"
+              class="booking__design__angle booking__design__angle--top-right"
+            />
+            <img
+              src="assets/icons/angles/angle-bottom-left.svg"
+              alt="decor angle"
+              class="booking__design__angle booking__design__angle--bottom-left"
+            />
+            <img
+              src="assets/icons/angles/angle-bottom-right.svg"
+              alt="decor angle"
+              class="booking__design__angle booking__design__angle--bottom-right"
+            />
+            <h2 class="title title--design">
+              HOW TO CREATE YOUR OWN UNIQUE DESIGN
+            </h2>
+            <div class="booking__design__steps">
+              <div>
+                <h3>01</h3>
+                <h4>DESCRIBE YOUR IDEA IN DETAIL</h4>
+                <p>
+                  Tell me about your idea and where you want the tattoo. Mention
+                  any characters, objects, or scenes you want to include in the
+                  tattoo.
+                </p>
+              </div>
+              <div>
+                <h3>02</h3>
+                <h4>SEND REFERENCES YOU LIKE</h4>
+                <p>
+                  These can be photos of similar tattoos, sketches, or artworks.
+                  This will help me understand the style you prefer.
+                </p>
+              </div>
+            </div>
+            <div class="booking__design__steps">
+              <div>
+                <h3>03</h3>
+                <h4>SCHEDULE A PERSONAL CONSULTATION</h4>
+                <p>
+                  How much does it cost? It's free! This helps us get better
+                  results and communicate more effectively. We’ll understand
+                  each other better by discussing the design in prison.
+                </p>
+              </div>
+              <div>
+                <h3>04</h3>
+                <h4>CREATE THE DESIGN WITH ME</h4>
+                <p>
+                  We will have a one-hour consultation, during which we will lay
+                  the foundation for your unique project.
+                </p>
+                <p>
+                  We will measure the placement area and create your design on a
+                  graphic tablet, considering your anatomy.
+                </p>
+              </div>
+            </div>
+            <a href="#" class="common__link common__link--design"
+              >SUBMIT FORM</a
+            >
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq">
+          <div class="faq__content">
+            <h2 class="title title--faq">FAQ</h2>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>How to prepare for the session</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+              <p>
+                A tattoo is a stress and trauma for the body. So, I recommend
+                choosing a session date with the healing process in mind.
+              </p>
+              <p>
+                Pick a day when you have 1-2 days off afterward to let the
+                tattoo start healing. Avoid physical exertion for a week.
+              </p>
+              <p>
+                Before the session, ensure you get a good night's sleep, have
+                breakfast, and avoid alcohol.
+              </p>
+              <p>
+                It's also recommended to exfoliate or scrub the skin with a
+                washcloth the day before the session to remove dead skin cells.
+              </p>
+              <p>
+                Bring comfortable clothing. For example, a sleeveless shirt for
+                a tattoo on your arm or shorts for work on your leg. Choose
+                clothes that you don't mind getting dirty.
+              </p>
+            </div>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>How long do large projects take?</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+            </div>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>What are the contraindications?</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+            </div>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>Pricing and deposit</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+            </div>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>How to care for a tattoo</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+            </div>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>Can I purchase a gift certificate?</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+            </div>
+            <div class="faq__item">
+              <div class="faq__item__header">
+                <h4>How to get to the studio</h4>
+                <button>
+                  <img src="assets/icons/faq_icon.svg" alt="Open icon" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer id="footer" class="footer">
+        <h2 class="title title--footer">
+          Do you have <span>any questions left?</span>
+        </h2>
+        <a href="#" class="common__link">Get a free consultation</a>
+        <div class="footer__links">
+          <a
+            href="#"
+            target="_blank"
+            title="Instagram"
+            class="menu__link menu__link--inst"
+          ></a>
+          <a
+            href="#"
+            target="_blank"
+            title="Whatsapp"
+            class="menu__link menu__link--watsapp"
+          ></a>
+          <a
+            href="#"
+            target="_blank"
+            title="Telegram"
+            class="menu__link menu__link--tg"
+          ></a>
+        </div>
+        <div class="footer__creators">
+          <p>made by</p>
+          <a href="#"><img src="assets/icons/kokoro_team.svg" /></a>
+        </div>
+      </footer>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
