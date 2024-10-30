@@ -7,13 +7,21 @@
 .menu {
     position: absolute;
     z-index: 9;
-}
 
-.menu--left {
-    display: flex;
-    flex-direction: column;
-    top: 128px;
-    left: 34px;
+    &--left {
+        display: flex;
+        flex-direction: column;
+        top: 128px;
+        left: 34px;
+    }
+
+    &--right {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        right: 8px;
+        top: 194px;
+    }
 }
 
 .menu__button {
@@ -26,31 +34,24 @@
     white-space: nowrap;
     transform-origin: left bottom;
     position: absolute;
-}
+    font-family: 'Roboto', sans-serif;
 
-.menu__button:hover {
-    color: var(--assent-bright-color);
-    transition: all 0.3s ease;
-}
+    &:hover {
+        color: var(--assent-bright-color);
+        transition: all 0.3s ease;
+    }
 
-.menu__button--project {
-    top: 335px;
-}
+    &--project {
+        top: 335px;
+    }
 
-.menu__button--me {
-    top: 228px;
-}
+    &--me {
+        top: 228px;
+    }
 
-.menu__button--session {
-    top: 135px;
-}
-
-.menu--right {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    right: 8px;
-    top: 194px;
+    &--session {
+        top: 135px;
+    }
 }
 
 .menu__link {
@@ -60,28 +61,42 @@
     background-repeat: no-repeat;
     background-size: contain;
     transition: all 0.3s ease;
+
+    &--inst {
+        background-image: url("/assets/icons/Inst.svg");
+
+        &:hover {
+            background-image: url("/assets/icons/Inst_hover.svg");
+        }
+    }
+
+    &--watsapp {
+        background-image: url("/assets/icons/Watsapp.svg");
+
+        &:hover {
+            background-image: url("/assets/icons/Watsapp_hover.svg");
+        }
+    }
+
+    &--tg {
+        background-image: url("/assets/icons/Tg.svg");
+
+        &:hover {
+            background-image: url("/assets/icons/Tg_hover.svg");
+        }
+    }
 }
 
-.menu__link--inst {
-    background-image: url("/assets/icons/Inst.svg");
-}
+@media screen and (max-width: 651px) {
+    .menu {
 
-.menu__link--inst:hover {
-    background-image: url("/assets/icons/Inst_hover.svg");
-}
+        &--left {
+            display: none;
+        }
 
-.menu__link--watsapp {
-    background-image: url("/assets/icons/Watsapp.svg");
-}
-
-.menu__link--watsapp:hover {
-    background-image: url("/assets/icons/Watsapp_hover.svg");
-}
-
-.menu__link--tg {
-    background-image: url("/assets/icons/Tg.svg");
-}
-
-.menu__link--tg:hover {
-    background-image: url("/assets/icons/Tg_hover.svg");
+        &--right {
+            right: 25px;
+            top: 540px;
+        }
+    }
 }

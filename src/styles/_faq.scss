@@ -4,6 +4,44 @@
     flex-direction: column;
     align-items: center;
     padding: 80px 0 132px;
+
+    &__item {
+        width: 888px;
+        border-bottom: 2px solid var(--link-btn-color);
+        margin-bottom: 40px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &__header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+
+            h4 {
+                font-size: clamp(24px, 2vw, 28px);
+                font-weight: 700;
+                line-height: clamp(28.8px, 2vw, 30.8px);
+                letter-spacing: 0.01em;
+                color: var(--link-btn-color);
+                text-transform: uppercase;
+            }
+        }
+
+        p {
+            font-size: clamp(14px, 2vw, 20px);
+            font-weight: 400;
+            line-height: 27px;
+            line-height: clamp(19px, 2vw, 27px);
+            letter-spacing: 0.01em;
+            color: var(--link-btn-color);
+
+            &:last-child {
+                margin-bottom: 40px;
+            }
+        }
+    }
 }
 
 .title--faq {
@@ -11,39 +49,35 @@
     margin-bottom: 68px;
 }
 
-.faq__item {
-    width: 888px;
-    border-bottom: 2px solid var(--link-btn-color);
-    margin-bottom: 40px;
-}
+@media screen and (max-width: 651px) {
+    .faq {
+        padding: 64px 16px 80px;
 
-.faq__item:last-child {
-    margin-bottom: 0;
-}
+        &__item {
+            width: 100%;
+            margin-bottom: 28px;
 
-.faq__item__header h4 {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 30.8px;
-    letter-spacing: 0.01em;
-    color: var(--link-btn-color);
-    text-transform: uppercase;
-}
+            &:last-child {
+                margin-bottom: 0;
+            }
 
-.faq__item p {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 27px;
-    letter-spacing: 0.01em;
-    color: var(--link-btn-color);
-}
+            &__header {
+                margin-bottom: 8px;
+            }
 
-.faq__item p:last-child {
-    margin-bottom: 40px;
-}
+            h4 {
+                max-width: 289px;
+            }
 
-.faq__item__header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
+            p {
+                &:last-child {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+
+    .title--faq {
+        margin-bottom: 36px;
+    }
 }
