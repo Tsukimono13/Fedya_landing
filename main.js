@@ -20,4 +20,13 @@ document.querySelector('#app').innerHTML = `
   // </div>
 `;
 
+// window.addEventListener('scroll', () => {
+//   // Высчитываем процент прокрутки
+//   const scrollTop = window.scrollY;
+//   const documentHeight =
+//     document.documentElement.scrollHeight - window.innerHeight;
+//   const scrollPercent = (scrollTop / documentHeight) * 100;
 
+//   // Устанавливаем ширину индикатора загрузки
+//   document.querySelector('.loading').style.width = scrollPercent + '%';
+// });
