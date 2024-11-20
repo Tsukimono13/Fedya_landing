@@ -9,6 +9,10 @@
     justify-content: center;
     padding: 80px 0 93px;
 
+    @media screen and (max-width: 651px) {
+        padding: 64px 16px 42px;
+    }
+
     &__creators {
         display: flex;
         flex-direction: column;
@@ -32,6 +36,10 @@
     span {
         display: block;
     }
+
+    @media screen and (max-width: 651px) {
+        margin-bottom: 24px;
+    }
 }
 
 .footer__links {
@@ -39,18 +47,8 @@
     gap: 8px;
     align-items: center;
     margin: 60px 0;
-}
 
-@media screen and (max-width: 651px) {
-    .footer {
-        padding: 64px 16px 42px;
-    }
-
-    .title--footer {
-        margin-bottom: 24px;
-    }
-
-    .footer__links {
+    @media screen and (max-width: 651px) {
         margin: 32px 0;
     }
 }

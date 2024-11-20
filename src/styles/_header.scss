@@ -22,6 +22,17 @@
         right: 8px;
         top: 194px;
     }
+
+    @media screen and (max-width: 651px) {
+        &--left {
+            display: none;
+        }
+
+        &--right {
+            right: 25px;
+            top: 540px;
+        }
+    }
 }
 
 .menu__button {
@@ -83,20 +94,6 @@
 
         &:hover {
             background-image: url("/assets/icons/Tg_hover.svg");
-        }
-    }
-}
-
-@media screen and (max-width: 651px) {
-    .menu {
-
-        &--left {
-            display: none;
-        }
-
-        &--right {
-            right: 25px;
-            top: 540px;
         }
     }
 }

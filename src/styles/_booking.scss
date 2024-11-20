@@ -9,10 +9,30 @@
         position: absolute;
         left: 0;
         top: -63px;
+
+        @media screen and (max-width: 651px) {
+            top: -44px;
+            width: 320px;
+            height: 370px;
+        }
+
+        @media (min-width: 651px) and (max-width: 1111px) {
+            top: -63px;
+            width: 480px;
+            height: 530px;
+        }
     }
 
     &__steps {
         padding: 54px 55px 0 721px;
+
+        @media screen and (max-width: 651px) {
+            padding: 358px 16px 0;
+        }
+
+        @media (min-width: 651px) and (max-width: 1111px) {
+            padding: 500px 32px 0;
+        }
     }
 
     &__list {
@@ -39,6 +59,19 @@
                 background-color: var(--main-text-color);
             }
         }
+
+        @media screen and (max-width: 651px) {
+
+            li {
+                padding-left: 24px;
+                margin-bottom: 8px;
+
+                &::before {
+                    width: 8px;
+                    height: 8px;
+                }
+            }
+        }
     }
 
     &__design {
@@ -48,11 +81,41 @@
         align-items: center;
         position: relative;
 
+        @media screen and (max-width: 651px) {
+            margin-top: 80px;
+            padding: 0 16px;
+        }
+
         &__steps {
             display: flex;
             gap: 93px;
             margin-bottom: 72px;
             flex-wrap: wrap;
+
+            @media screen and (max-width: 651px) {
+                gap: 36px;
+                margin-bottom: 36px;
+
+                h3 {
+                    margin-bottom: 12px;
+                }
+
+                h4 {
+                    margin-bottom: 8px;
+                }
+
+                p {
+                    font-size: 20px;
+                    font-weight: 400;
+                    line-height: 27px;
+                    letter-spacing: 0.01em;
+                    max-width: 440px;
+                }
+            }
+
+            @media (min-width: 651px) and (max-width: 1111px) {
+                justify-content: center;
+            }
 
             h3 {
                 font-size: clamp(44px, 4vw, 68px);
@@ -76,7 +139,6 @@
                 font-size: clamp(16px, 4vw, 20px);
                 line-height: clamp(21.6px, 4vw, 27px);
                 font-weight: 400;
-                line-height: 27px;
                 letter-spacing: 0.01em;
                 max-width: 440px;
             }
@@ -105,99 +167,8 @@
                 bottom: 60px;
                 right: 164px;
             }
-        }
-    }
-}
 
-
-
-.title--booking {
-    max-width: 400px;
-    margin-bottom: 60px;
-    position: relative;
-
-    &::after {
-        position: absolute;
-        content: "";
-        width: 402px;
-        height: 12px;
-        background-color: var(--assent-color);
-        left: 0;
-        bottom: -22px;
-    }
-}
-
-.common__link--booking {
-    padding: 20px 40px;
-    margin-top: 40px;
-}
-
-.title--design {
-    max-width: 629px;
-    margin-bottom: 76px;
-}
-
-.common__link--design {
-    margin-top: 20px;
-    margin-bottom: 155px;
-}
-
-@media screen and (max-width: 651px) {
-    .booking {
-        &__work-img {
-            position: absolute;
-            left: 0;
-            top: -44px;
-            width: 320px;
-            height: 370px;
-        }
-
-        &__steps {
-            padding: 358px 16px 0;
-        }
-
-        &__list {
-            padding-left: 0;
-
-            li {
-                padding-left: 24px;
-                margin-bottom: 8px;
-
-                &::before {
-                    width: 8px;
-                    height: 8px;
-                }
-            }
-        }
-
-        &__design {
-            margin-top: 80px;
-            padding: 0 16px;
-
-            &__steps {
-                gap: 36px;
-                margin-bottom: 36px;
-
-                h3 {
-                    margin-bottom: 12px;
-                }
-
-                h4 {
-                    margin-bottom: 8px;
-                }
-
-                p {
-                    font-size: 20px;
-                    font-weight: 400;
-                    line-height: 27px;
-                    letter-spacing: 0.01em;
-                    max-width: 440px;
-                }
-            }
-
-            &__angle {
-                position: absolute;
-                z-index: 1;
+            @media screen and (max-width: 651px) {
 
                 &--top-left,
                 &--top-right {
@@ -219,10 +190,61 @@
                     display: none;
                 }
             }
+
+            @media (min-width: 651px) and (max-width: 1111px) {
+
+                &--top-left,
+                &--top-right {
+                    top: -35px;
+                    width: 80px;
+                    height: 80px;
+                }
+
+                &--bottom-left,
+                &--bottom-right {
+                    bottom: 90px;
+                    width: 80px;
+                    height: 80px;
+                }
+
+                &--top-left {
+                    left: 32px;
+                }
+
+                &--top-right {
+                    right: 32px;
+                }
+
+                &--bottom-left {
+                    left: 32px;
+                }
+
+                &--bottom-right {
+                    right: 32px;
+                }
+            }
         }
     }
+}
 
-    .title--booking {
+
+
+.title--booking {
+    max-width: 400px;
+    margin-bottom: 60px;
+    position: relative;
+
+    &::after {
+        position: absolute;
+        content: "";
+        width: 402px;
+        height: 12px;
+        background-color: var(--assent-color);
+        left: 0;
+        bottom: -22px;
+    }
+
+    @media screen and (max-width: 651px) {
         max-width: 265px;
         margin-bottom: 44px;
 
@@ -232,19 +254,34 @@
             bottom: -18px;
         }
     }
+}
 
-    .title--design {
+.common__link--booking {
+    padding: 20px 40px;
+    margin-top: 40px;
+
+    @media screen and (max-width: 651px) {
+        margin-top: 28px;
+        padding: 16px 0;
+    }
+}
+
+.title--design {
+    max-width: 629px;
+    margin-bottom: 76px;
+
+    @media screen and (max-width: 651px) {
         max-width: 307px;
         margin-bottom: 40px;
         text-align: center;
     }
+}
 
-    .common__link--booking {
-        margin-top: 28px;
-        padding: 16px 0;
-    }
+.common__link--design {
+    margin-top: 20px;
+    margin-bottom: 155px;
 
-    .common__link--design {
+    @media screen and (max-width: 651px) {
         margin-top: 12px;
         margin-bottom: 80px;
     }
