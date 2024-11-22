@@ -2,31 +2,64 @@ import './style.scss';
 import javascriptLogo from './javascript.svg';
 import viteLogo from '/vite.svg';
 
-document.querySelector('#app').innerHTML = `
-  // <div>
-  //   <a href="https://vitejs.dev" target="_blank">
-  //     <img src="${viteLogo}" class="logo" alt="Vite logo" />
-  //   </a>
-  //   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-  //     <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-  //   </a>
-  //   <h1>Hello Vite!</h1>
-  //   <div class="card">
-  //     <button id="counter" type="button"></button>
-  //   </div>
-  //   <p class="read-the-docs">
-  //     Click on the Vite logo to learn more
-  //   </p>
-  // </div>
-`;
+//loading bar
+function updateProgressBar() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  requestAnimationFrame(() => {
+    document.querySelector('.loading').style.width = `${progress}%`;
+  });
+}
+window.addEventListener('scroll', updateProgressBar);
+window.addEventListener('resize', updateProgressBar);
+updateProgressBar();
 
-// window.addEventListener('scroll', () => {
-//   // Высчитываем процент прокрутки
-//   const scrollTop = window.scrollY;
-//   const documentHeight =
-//     document.documentElement.scrollHeight - window.innerHeight;
-//   const scrollPercent = (scrollTop / documentHeight) * 100;
+// Faq toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButtons = document.querySelectorAll('.faq__toggle');
 
-//   // Устанавливаем ширину индикатора загрузки
-//   document.querySelector('.loading').style.width = scrollPercent + '%';
-// });
+  toggleButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const faqItem = button.closest('.faq__item');
+      const faqItemBody = faqItem.querySelector('.faq__item__body');
+      const img = button.querySelector('img');
+      
+      document.querySelectorAll('.faq__item').forEach((item) => {
+        const body = item.querySelector('.faq__item__body');
+        const icon = item.querySelector('.faq__toggle img');
+        if (body && item !== faqItem) {
+          body.style.maxHeight = null;
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      if (faqItemBody.style.maxHeight) {
+        faqItemBody.style.maxHeight = null;
+        img.style.transform = 'rotate(0deg)';
+      } else {
+        faqItemBody.style.maxHeight = faqItemBody.scrollHeight + 'px';
+        img.style.transform = 'rotate(45deg)';
+      }
+    });
+  });
+});
+const marqueeText = document.querySelector('.marquee-text');
+const marqueeContainer = document.querySelector('.marquee-container');
+
+// Получаем ширину контейнера и текста
+const containerWidth = marqueeContainer.offsetWidth;
+const textWidth = marqueeText.offsetWidth;
+
+// Анимация с GSAP: перемещение текста слева направо
+gsap.fromTo(
+  marqueeText, // Элемент для анимации
+  { x: containerWidth }, // Начальное положение: за правым краем контейнера
+  { 
+    x: -textWidth, // Конечное положение: за левым краем контейнера
+    duration: 10,  // Длительность анимации
+    ease: "linear", // Постоянная скорость
+    repeat: -1, // Бесконечное повторение
+    delay: 1 // Задержка перед началом анимации
+  }
+);
