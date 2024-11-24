@@ -74,40 +74,44 @@
         padding: 16px 0 13px;
         background-color: var(--link-btn-color);
         width: 100%;
+        overflow: hidden;
         display: flex;
-        gap: 58px;
 
-        p {
-            font-family: 'Long Shot', sans-serif;
-            font-size: clamp(20px, 2vw, 34px);
-            line-height: clamp(22px, 2vw, 37px);
-            font-weight: 400;
-            letter-spacing: 0.01em;
-            color: var(--added-color);
-            text-transform: uppercase;
-            position: relative;
+        .tag-wrap {
+            display: flex;
+            white-space: nowrap;
+            transform: translateX(0);
 
-            &::after {
-                content: "";
-                position: absolute;
-                height: 13px;
-                width: 13px;
-                background-color: var(--added-color);
-                right: -35px;
-                rotate: 45deg;
-                top: 4px;
-            }
-        }
+            p {
+                font-family: 'Long Shot', sans-serif;
+                font-size: clamp(20px, 2vw, 34px);
+                line-height: clamp(22px, 2vw, 37px);
+                font-weight: 400;
+                letter-spacing: 0.01em;
+                color: var(--added-color);
+                text-transform: uppercase;
+                position: relative;
+                margin-right: 58px;
 
-        @media screen and (max-width: 651px) {
-            padding: 9px 0 6px;
-            gap: 35px;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 13px;
+                    width: 13px;
+                    background-color: var(--added-color);
+                    right: -35px;
+                    rotate: 45deg;
+                    top: 4px;
+                }
 
-            p::after {
-                height: 8px;
-                width: 8px;
-                top: 5px;
-                right: -21px;
+                @media screen and (max-width: 651px) {
+                    &::after {
+                        height: 8px;
+                        width: 8px;
+                        top: 5px;
+                        right: -21px;
+                    }
+                }
             }
         }
     }
