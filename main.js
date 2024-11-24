@@ -87,11 +87,13 @@ prevButton.addEventListener('click', () => {
 
 nextButton.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % totalSlides; 
+  updateSlides();
 });
-
 
 updateSlides();
 
+
+//tag animation
 gsap.registerPlugin(ScrollTrigger);
 
 const tags = document.querySelector(".tag-wrap");
