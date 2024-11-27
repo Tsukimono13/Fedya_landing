@@ -5,12 +5,12 @@
     left: 0;
     height: 6px;
     width: 0%;
-    z-index: 1000; 
+    z-index: 1000;
     transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .menu {
-    position: absolute;
+    position: fixed;
     z-index: 9;
 
     li {
@@ -74,6 +74,14 @@
     }
 }
 
+.menu__button.scrolled {
+    color: var(--assent-bright-color);
+
+    &:hover {
+        color: var(--main-text-color);
+    }
+}
+
 .menu__link {
     width: 36px;
     height: 36px;
@@ -104,5 +112,29 @@
         &:hover {
             background-image: url("/assets/icons/Tg_hover.svg");
         }
+    }
+}
+
+.menu__link.scrolled.menu__link--inst {
+    background-image: url("/assets/icons/Inst_hover.svg");
+
+    &:hover {
+        background-image: url("/assets/icons/Inst.svg");
+    }
+}
+
+.menu__link.scrolled.menu__link--watsapp {
+    background-image: url("/assets/icons/Watsapp_hover.svg");
+
+    &:hover {
+        background-image: url("/assets/icons/Watsapp.svg");
+    }
+}
+
+.menu__link.scrolled.menu__link--tg {
+    background-image: url("/assets/icons/Tg_hover.svg");
+
+    &:hover {
+        background-image: url("/assets/icons/Tg.svg");
     }
 }

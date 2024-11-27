@@ -15,8 +15,6 @@ window.addEventListener('scroll', updateProgressBar);
 window.addEventListener('resize', updateProgressBar);
 updateProgressBar();
 
-
-
 // Faq toggle
 document.addEventListener('DOMContentLoaded', () => {
   const toggleButtons = document.querySelectorAll('.faq__toggle');
@@ -61,17 +59,12 @@ function updateSlides() {
     slide.classList.remove('active', 'next-slide', 'prev-slide');
     if (index === currentIndex) {
       slide.classList.add('active');
-    }
- 
-    else if (index === (currentIndex + 1) % totalSlides) {
+    } else if (index === (currentIndex + 1) % totalSlides) {
       slide.classList.add('next-slide');
-    }
-  
-    else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
+    } else if (index === (currentIndex - 1 + totalSlides) % totalSlides) {
       slide.classList.add('prev-slide');
     }
   });
-
 
   gsap.to(carouselContainer, {
     x: -currentIndex * 33.33 + '%',
@@ -81,29 +74,65 @@ function updateSlides() {
 }
 
 prevButton.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; 
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
   updateSlides();
 });
 
 nextButton.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % totalSlides; 
+  currentIndex = (currentIndex + 1) % totalSlides;
   updateSlides();
 });
 
 updateSlides();
 
-
 //tag animation
 gsap.registerPlugin(ScrollTrigger);
 
-const tags = document.querySelector(".tag-wrap");
-const clonedTags = tags.cloneNode(true); 
-tags.parentNode.appendChild(clonedTags); 
+const tags = document.querySelector('.tag-wrap');
+const clonedTags = tags.cloneNode(true);
+tags.parentNode.appendChild(clonedTags);
+
+gsap.to('.tag-wrap', {
+  x: '-100%',
+  duration: 14,
+  repeat: -1,
+  ease: 'linear',
+});
+
+// JS для отслеживания прокрутки
+const buttons = document.querySelectorAll('.menu__button');
+const links = document.querySelectorAll('.menu__link');
+const whiteSections = document.querySelectorAll('.about, .faq');
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        buttons.forEach((button) => button.classList.add('scrolled'));
+        links.forEach((link) => link.classList.add('scrolled'));
+      } else {
+        buttons.forEach((button) => button.classList.remove('scrolled'));
+        links.forEach((link) => link.classList.remove('scrolled'));
+      }
+    });
+  },
+  { threshold: 0.2 },
+);
+
+whiteSections.forEach((section) => observer.observe(section));
+
+//scroll to section
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const sectionId = button.className.match(/menu__button--(\w+)/)[1];
+    const section = document.querySelector(`#${sectionId}`);
 
 
-gsap.to(".tag-wrap", {
-  x: "-100%", 
-  duration: 10, 
-  repeat: -1, 
-  ease: "linear", 
+    if (section) {
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', 
+      });
+    }
+  });
 });
