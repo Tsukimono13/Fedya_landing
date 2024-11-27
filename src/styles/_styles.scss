@@ -6,4 +6,13 @@
 
 .preloading {
     background-color: var(--assent-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .preloading__logo {
+        width: 84px;
+        height: 132px;
+    }
 }

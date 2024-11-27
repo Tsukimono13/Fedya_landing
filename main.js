@@ -101,7 +101,7 @@ gsap.to('.tag-wrap', {
 
 // JS для отслеживания прокрутки
 const buttons = document.querySelectorAll('.menu__button');
-const links = document.querySelectorAll('.menu__link');
+const links = document.querySelectorAll('.scrolled');
 const whiteSections = document.querySelectorAll('.about, .faq');
 
 const observer = new IntersectionObserver(
@@ -116,7 +116,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.2 },
+  { threshold: 0.3 },
 );
 
 whiteSections.forEach((section) => observer.observe(section));
@@ -127,12 +127,13 @@ buttons.forEach((button) => {
     const sectionId = button.className.match(/menu__button--(\w+)/)[1];
     const section = document.querySelector(`#${sectionId}`);
 
-
     if (section) {
       section.scrollIntoView({
         behavior: 'smooth',
-        block: 'start', 
+        block: 'start',
       });
     }
   });
 });
+
+
