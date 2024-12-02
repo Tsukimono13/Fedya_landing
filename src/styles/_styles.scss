@@ -6,13 +6,21 @@
 
 .preloading {
     background-color: var(--assent-color);
-    min-height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
     display: flex;
-    justify-content: center;
-    align-items: center;
 
-    .preloading__logo {
+    &__logo {
         width: 84px;
         height: 132px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 11;
     }
 }

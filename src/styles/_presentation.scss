@@ -7,6 +7,160 @@
     align-items: center;
     flex-direction: column;
     position: relative;
+    overflow: hidden;
+
+    .presentation__glitches {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+
+        &--first {
+            top: 129px;
+        }
+
+        &--second {
+            top: 360px;
+            left: 194px;
+        }
+
+        &--third {
+            top: 472px;
+        }
+
+        &--fourth {
+            top: 540px;
+        }
+
+        .presentation__glitch {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: auto;
+            mix-blend-mode: soft-light;
+        }
+
+        &--first::before,
+        &--first::after {
+            background: url('assets/images/glitches/glitch_1.png') no-repeat center/cover;
+            animation: rgb-split-1 1s infinite;
+        }
+
+        &--second::before,
+        &--second::after {
+            background: url('assets/images/glitches/glitch_2.png') no-repeat center/cover;
+            animation: rgb-split-2 1.2s infinite;
+        }
+
+        &--third::before,
+        &--third::after {
+            background: url('assets/images/glitches/glitch_3.png') no-repeat center/cover;
+            animation: rgb-split-3 1.4s infinite;
+        }
+
+        &--fourth::before,
+        &--fourth::after {
+            background: url('assets/images/glitches/glitch_4.png') no-repeat center/cover;
+            animation: rgb-split-4 1.4s infinite;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+            mix-blend-mode: soft-light;
+            height: 10px;
+        }
+
+        &--first::before {
+            transform: translate(2px, 0);
+            filter: drop-shadow(0 0 5px red);
+        }
+
+        &--first::after {
+            transform: translate(-2px, 0);
+            filter: drop-shadow(0 0 5px blue);
+        }
+
+        &--second::before {
+            transform: translate(3px, 0);
+            filter: drop-shadow(0 0 5px green);
+        }
+
+        &--second::after {
+            transform: translate(-3px, 0);
+            filter: drop-shadow(0 0 5px yellow);
+        }
+
+        &--third::before {
+            transform: translate(4px, 0);
+            filter: drop-shadow(0 0 5px purple);
+        }
+
+        &--third::after {
+            transform: translate(-4px, 0);
+            filter: drop-shadow(0 0 5px orange);
+        }
+
+        &--fourth::before {
+            transform: translate(5px, 0);
+            filter: drop-shadow(0 0 5px pink);
+        }
+
+        &--fourth::after {
+            transform: translate(-5px, 0);
+            filter: drop-shadow(0 0 5px cyan);
+        }
+    }
+
+
+    // &__glitch {
+    //     position: absolute;
+    //     width: 100%;
+    //     left: 0;
+    //     mix-blend-mode: soft-light;
+    //     z-index: 1;
+
+
+    //     &--first {
+    //         top: 109px;
+    //     }
+
+    //     &--second {
+    //         top: 334px;
+
+    //     }
+
+    //     &--third {
+    //         top: 472px;
+    //     }
+
+    //     &--fourth {
+    //         top: 492px;
+    //     }
+    // }
+
+    // &__glitch-wrap {
+    //     display: flex;
+    //     overflow: hidden;
+    //     // position: relative;
+    //     position: absolute;
+    //     width: 100%;
+    //     top: 109px;
+    //     left: 0;
+    //     mix-blend-mode: soft-light;
+    //     z-index: 1;
+    // }
+
+    // &__glitch {
+    //     flex-shrink: 0;
+    //     width: auto;
+    //     height: auto;
+    // }
 
     &__logo {
         position: absolute;
@@ -26,6 +180,8 @@
         gap: 42px;
         margin-top: 70px;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
 
         @media screen and (max-width: 651px) {
             gap: 13px;
@@ -34,9 +190,9 @@
     }
 
     &__name {
-        padding-top: 80px;
+        padding-top: 60px;
 
-        h1 {
+        &__title {
             font-family: 'Long Shot', sans-serif;
             font-size: clamp(79px, 13vw, 174px);
             font-weight: 400;
@@ -51,6 +207,8 @@
             display: flex;
             justify-content: space-between;
             margin-top: 28px;
+            height: 23px;
+            overflow: hidden;
 
             p {
                 font-weight: 400;
@@ -116,7 +274,13 @@
         }
     }
 
+    &__photo {
+        overflow: hidden;
+        height: 156px;
+    }
+
     &__person {
+
         @media screen and (max-width: 651px) {
             width: 273px;
             height: 350px;
@@ -156,5 +320,41 @@
         &--presentation {
             margin-top: 30px;
         }
+    }
+}
+
+@keyframes rgb-split-1 {
+
+    0%,
+    100% {
+        transform: translate(3px, 3px);
+    }
+
+    50% {
+        transform: translate(10px, 3px);
+    }
+}
+
+@keyframes rgb-split-2 {
+
+    0%,
+    100% {
+        transform: translate(0px, 1px);
+    }
+
+    50% {
+        transform: translate(2px, 2px);
+    }
+}
+
+@keyframes rgb-split-4 {
+
+    0%,
+    100% {
+        transform: translate(2px, 2px);
+    }
+
+    50% {
+        transform: translate(5px, 5px);
     }
 }

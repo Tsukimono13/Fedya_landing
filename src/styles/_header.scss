@@ -138,3 +138,37 @@
         background-image: url("/assets/icons/Tg.svg");
     }
 }
+
+.menu__link--scroll-top {
+    display: none;
+    position: fixed;
+    top: 132px;
+    right: 10px;
+    background-image: url("/assets/icons/toTop.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 36px;
+    height: 56px;
+    cursor: pointer;
+    z-index: 9;
+    opacity: 0;
+    /* Начальная прозрачность */
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+        background-image: url("/assets/icons/toTop_hover.svg");
+    }
+}
+
+.menu__link--scroll-top.visible {
+    display: block;
+    opacity: 1;
+}
+
+.menu__link--scroll-top.scrolled {
+    background-image: url("/assets/icons/toTop_hover.svg"); /* Изменение изображения при прокрутке */
+}
+
+.menu__link--scroll-top.scrolled:hover {
+    background-image: url("/assets/icons/toTop.svg"); /* Изменение изображения при наведении */
+}

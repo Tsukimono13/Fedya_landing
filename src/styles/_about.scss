@@ -22,6 +22,11 @@
     &__details {
         padding-top: 95px;
 
+        &__title {
+            height: 60px;
+            overflow: hidden;
+        }
+
         @media screen and (max-width: 651px) {
             padding-top: 0;
         }
@@ -44,17 +49,28 @@
         }
     }
 
-    &__person {
-        @media screen and (max-width: 651px) {
-            width: 100%;
-            height: 100%;
-        }
+    &__person-container {
+        position: relative;
 
-        @media (min-width: 651px) and (max-width: 1111px) {
-            width: 486px;
-            height: 643px;
+        .about__person {
+
+            &--front {
+                position: absolute;
+                top: 0;
+            }
+
+            @media screen and (max-width: 651px) {
+                width: 100%;
+                height: 100%;
+            }
+
+            @media (min-width: 651px) and (max-width: 1111px) {
+                width: 486px;
+                height: 643px;
+            }
         }
     }
+
 
     &__link {
         font-size: clamp(20px, 2vw, 28px);
