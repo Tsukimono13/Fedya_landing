@@ -16,7 +16,10 @@
     &__content {
         display: flex;
         justify-content: center;
-        flex-wrap: wrap;
+
+        @media screen and (max-width: 1111px) {
+            flex-wrap: wrap;
+        }
     }
 
     &__details {
