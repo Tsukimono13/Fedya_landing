@@ -24,15 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const faqItemBody = faqItem.querySelector('.faq__item__body');
       const img = button.querySelector('img');
 
-      document.querySelectorAll('.faq__item').forEach((item) => {
-        const body = item.querySelector('.faq__item__body');
-        const icon = item.querySelector('.faq__toggle img');
-        if (body && item !== faqItem) {
-          body.style.maxHeight = null;
-          icon.style.transform = 'rotate(0deg)';
-        }
-      });
-
+      // Если тело уже открыто, скрываем его, иначе открываем
       if (faqItemBody.style.maxHeight) {
         faqItemBody.style.maxHeight = null;
         img.style.transform = 'rotate(0deg)';
@@ -204,403 +196,813 @@ glitchImages.forEach((image) => {
 
 // preloader
 const tlLoader = gsap.timeline();
-tlLoader
-  .to(
-    '.preloading__logo',
-    {
-      scale: 0.9,
-      duration: 0.9,
-      repeat: 2,
-      yoyo: true,
-      ease: 'power1.inOut',
-    },
-    '+=0.1',
-  )
+const mm = gsap.matchMedia();
 
-  .to('.preloading', {
-    yPercent: -100,
-    duration: 2,
-    ease: 'power2.inOut',
-  })
-  .fromTo(
-    '.presentation__name__title',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-    },
-  )
-  .fromTo(
-    '.presentation__name__details--title',
-    {
-      opacity: 0,
-      y: '-100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: 'power2.out',
-    },
-  )
-  .add(
-    gsap.fromTo(
-      '.menu--left',
+mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
+  tlLoader
+    .to(
+      '.preloading__logo',
+      {
+        scale: 0.9,
+        duration: 0.9,
+        repeat: 2,
+        yoyo: true,
+        ease: 'power1.inOut',
+      },
+      '+=0.1',
+    )
+
+    .to('.preloading', {
+      yPercent: -100,
+      duration: 2,
+      ease: 'power2.inOut',
+    })
+    .fromTo(
+      '.presentation__name__title',
       {
         opacity: 0,
-        x: -100,
+        y: '100%',
       },
       {
         opacity: 1,
-        x: 0,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+      },
+    )
+    .fromTo(
+      '.presentation__name__details--title',
+      {
+        opacity: 0,
+        y: '-100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
         duration: 0.6,
         ease: 'power2.out',
       },
-    ),
-  )
-  .add(
-    gsap.fromTo(
-      '.menu--right',
+    )
+    .add(
+      gsap.fromTo(
+        '.menu--left',
+        {
+          opacity: 0,
+          x: -100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        },
+      ),
+    )
+    .add(
+      gsap.fromTo(
+        '.menu--right',
+        {
+          opacity: 0,
+          x: 100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        },
+      ),
+      '<',
+    )
+    .fromTo(
+      '.title--projects',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects',
+          start: 'top 70%',
+          end: 'top 20%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.projects__details__text',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects',
+          start: 'top 40%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.common__link--projects',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects',
+          start: 'top 20%',
+          end: 'top 0%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.title--about',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 70%',
+          end: 'top 20%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__details__text',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 40%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__link',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 20%',
+          end: 'top 0%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__person--back',
       {
         opacity: 0,
         x: 100,
+        scale: 0.8,
       },
       {
         opacity: 1,
         x: 0,
+        duration: 1.0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 60%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__person--front',
+      {
+        opacity: 0,
+        x: 100,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1.0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 40%',
+          end: 'top 0%',
+          scrub: true,
+        },
+      },
+    )
+
+    .fromTo(
+      '.booking__work-img',
+      {
+        x: '-100%',
+      },
+      {
+        x: 0,
+        duration: 1.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 90%',
+          end: 'top 30%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__list__item',
+      {
+        y: '-100%',
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 50%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking',
+      {
+        backgroundSize: '100%',
+      },
+      {
+        backgroundSize: '150%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 80%',
+          end: 'bottom',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__design__angle--top-left',
+      {
+        x: -200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 60%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__design__angle',
+      {
+        scale: 0.6,
+      },
+      {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'middle 30%',
+          end: 'bottom 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__design__steps__item',
+      {
+        x: -200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'middle 20%',
+          end: 'bottom 45%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.title--faq',
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.faq',
+          start: 'top 70%',
+          end: 'top 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.faq__item',
+      {
+        scale: 0,
+      },
+      {
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.faq',
+          start: 'top 80%',
+          end: 'bottom 60%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.footer .title',
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.footer',
+          start: 'top 70%',
+          end: 'top 50%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.common__link--footer',
+      {
+        opacity: 0,
+        y: 60,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.footer',
+          start: 'top 50%',
+          end: 'top 30%',
+          scrub: true,
+        },
+      },
+    );
+});
+
+mm.add('(max-width: 1111px)', () => {
+  tlLoader
+    .to(
+      '.preloading__logo',
+      {
+        scale: 0.9,
+        duration: 0.9,
+        repeat: 2,
+        yoyo: true,
+        ease: 'power1.inOut',
+      },
+      '+=0.1',
+    )
+
+    .to('.preloading', {
+      yPercent: -100,
+      duration: 2,
+      ease: 'power2.inOut',
+    })
+    .fromTo(
+      '.presentation__name__title',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+      },
+    )
+    .fromTo(
+      '.presentation__name__details--title',
+      {
+        opacity: 0,
+        y: '-100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
         duration: 0.6,
         ease: 'power2.out',
       },
-    ),
-    '<',
-  )
-  .fromTo(
-    '.title--projects',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.projects',
-        start: 'top 70%',
-        end: 'top 20%',
-        scrub: true,
+    )
+    .add(
+      gsap.fromTo(
+        '.menu--left',
+        {
+          opacity: 0,
+          x: -100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        },
+      ),
+    )
+    .add(
+      gsap.fromTo(
+        '.menu--right',
+        {
+          opacity: 0,
+          x: 100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        },
+      ),
+      '<',
+    )
+    .fromTo(
+      '.title--projects',
+      {
+        opacity: 0,
+        y: '100%',
       },
-    },
-  )
-  .fromTo(
-    '.projects__details__text',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.projects',
-        start: 'top 40%',
-        end: 'top 10%',
-        scrub: true,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects',
+          start: 'top 70%',
+          end: 'top 20%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.common__link--projects',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.projects',
-        start: 'top 20%',
-        end: 'top 0%',
-        scrub: true,
+    )
+    .fromTo(
+      '.projects__details__text',
+      {
+        opacity: 0,
+        y: '100%',
       },
-    },
-  )
-  .fromTo(
-    '.title--about',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.about',
-        start: 'top 70%',
-        end: 'top 20%',
-        scrub: true,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects',
+          start: 'top 40%',
+          end: 'top 10%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.about__details__text',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.about',
-        start: 'top 40%',
-        end: 'top 10%',
-        scrub: true,
+    )
+    .fromTo(
+      '.common__link--projects',
+      {
+        opacity: 0,
+        y: '100%',
       },
-    },
-  )
-  .fromTo(
-    '.about__link',
-    {
-      opacity: 0,
-      y: '100%',
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.about',
-        start: 'top 20%',
-        end: 'top 0%',
-        scrub: true,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.projects',
+          start: 'top 20%',
+          end: 'top 0%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.about__person--back',
-    {
-      opacity: 0,
-      x: 100,
-      scale: 0.8,
-    },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 1.0,
-      scale: 1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.about',
-        start: 'top 60%',
-        end: 'top 10%',
-        scrub: true,
+    )
+    .fromTo(
+      '.title--about',
+      {
+        opacity: 0,
+        y: '100%',
       },
-    },
-  )
-  .fromTo(
-    '.about__person--front',
-    {
-      opacity: 0,
-      x: 100,
-      scale: 0.8,
-    },
-    {
-      opacity: 1,
-      x: 0,
-      duration: 1.0,
-      scale: 1,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.about',
-        start: 'top 40%',
-        end: 'top 0%',
-        scrub: true,
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 70%',
+          end: 'top 20%',
+          scrub: true,
+        },
       },
-    },
-  )
+    )
+    .fromTo(
+      '.about__details__text',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 40%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__link',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 20%',
+          end: 'top 0%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__person--back',
+      {
+        opacity: 0,
+        y: 100,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 65%',
+          end: 'top 10%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__person--front',
+      {
+        opacity: 0,
+        y: 100,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 45%',
+          end: 'top 0%',
+          scrub: true,
+        },
+      },
+    )
 
-  .fromTo(
-    '.booking__work-img',
-    {
-      x: '-100%',
-    },
-    {
-      x: 0,
-      duration: 1.5,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.booking',
-        start: 'top 90%',
-        end: 'top 30%',
-        scrub: true,
+    .fromTo(
+      '.booking__work-img',
+      {
+        x: '-100%',
       },
-    },
-  )
-  .fromTo(
-    '.booking__list__item',
-    {
-      y: '-100%',
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: '.booking',
-        start: 'top 50%',
-        end: 'top 10%',
-        scrub: true,
+      {
+        x: 0,
+        duration: 1.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 90%',
+          end: 'top 30%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.booking',
-    {
-      backgroundSize: '100%',
-    },
-    {
-      backgroundSize: '150%',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.booking',
-        start: 'top 80%',
-        end: 'bottom',
-        scrub: true,
+    )
+    .fromTo(
+      '.booking__list__item',
+      {
+        y: '-100%',
+        opacity: 0,
       },
-    },
-  )
-  .fromTo(
-    '.booking__design__angle--top-left',
-    {
-      x: -200,
-      opacity: 0,
-    },
-    {
-      x: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.booking',
-        start: 'top 60%',
-        end: 'top 10%',
-        scrub: true,
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 35%',
+          end: 'top 10%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.booking__design__angle',
-    {
-      scale: 0.6,
-    },
-    {
-      scale: 1,
-      duration: 0.3,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.booking',
-        start: 'middle 30%',
-        end: 'bottom 40%',
-        scrub: true,
+    )
+    .fromTo(
+      '.booking__design__angle--top-left',
+      {
+        x: -200,
+        opacity: 0,
       },
-    },
-  )
-  .fromTo(
-    '.booking__design__steps__item',
-    {
-      x: -200,
-      opacity: 0,
-    },
-    {
-      x: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: '.booking',
-        start: 'middle 20%',
-        end: 'bottom 50%',
-        scrub: true,
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 60%',
+          end: 'top 10%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.title--faq',
-    {
-      opacity: 0,
-    },
-    {
-      opacity: 1,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: '.faq',
-        start: 'top 70%',
-        end: 'top 40%',
-        scrub: true,
+    )
+    .fromTo(
+      '.booking__design__angle',
+      {
+        scale: 0.6,
       },
-    },
-  )
-  .fromTo(
-    '.faq__item',
-    {
-      scale: 0,
-    },
-    {
-      scale: 1,
-      duration: 0.6,
-      stagger: 0.2,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: '.faq',
-        start: 'top 80%',
-        end: 'bottom 60%',
-        scrub: true,
+      {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'middle 30%',
+          end: 'bottom 40%',
+          scrub: true,
+        },
       },
-    },
-  )
-  .fromTo(
-    '.footer .title',
-    {
-      opacity: 0,
-      y: 50,
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: 'power2.out',
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: '.footer',
-        start: 'top 70%',
-        end: 'top 50%',
-        scrub: true,
+    )
+    .fromTo(
+      '.booking__design__steps__item',
+      {
+        x: -200,
+        opacity: 0,
       },
-    },
-  );
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'middle 30%',
+          end: 'bottom 60%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.title--faq',
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.faq',
+          start: 'top 70%',
+          end: 'top 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.faq__item',
+      {
+        scale: 0,
+      },
+      {
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.faq',
+          start: 'top 80%',
+          end: 'bottom 60%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.footer .title',
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.footer',
+          start: 'top 70%',
+          end: 'top 50%',
+          scrub: true,
+        },
+      },
+    );
+});
+
+// mm.revert();
 
 const personImage = document.querySelector('.presentation__person');
 

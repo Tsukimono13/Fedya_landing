@@ -9,6 +9,11 @@
     position: relative;
     overflow: hidden;
 
+    &__person {
+        width: 439px;
+        height: 553px;
+    }
+
     .presentation__glitches {
         position: relative;
         display: inline-block;

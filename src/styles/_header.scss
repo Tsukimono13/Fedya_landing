@@ -1,5 +1,5 @@
 .loading {
-    background-color: var(--assent-color);
+    background-color: var(--assent-bright-color);
     position: fixed;
     top: 0;
     left: 0;
@@ -40,6 +40,18 @@
         &--right {
             right: 25px;
             top: 540px;
+        }
+    }
+
+    @media screen and (min-width: 2500px) {
+        &--left {
+            top: 128px;
+            left: 30px;
+        }
+
+        &--right {
+            right: 30px;
+            top: 194px;
         }
     }
 }
@@ -152,7 +164,6 @@
     cursor: pointer;
     z-index: 9;
     opacity: 0;
-    /* Начальная прозрачность */
     transition: opacity 0.3s ease-in-out;
 
     &:hover {
@@ -166,9 +177,11 @@
 }
 
 .menu__link--scroll-top.scrolled {
-    background-image: url("/assets/icons/toTop_hover.svg"); /* Изменение изображения при прокрутке */
+    background-image: url("/assets/icons/toTop_hover.svg");
+    /* Изменение изображения при прокрутке */
 }
 
 .menu__link--scroll-top.scrolled:hover {
-    background-image: url("/assets/icons/toTop.svg"); /* Изменение изображения при наведении */
+    background-image: url("/assets/icons/toTop.svg");
+    /* Изменение изображения при наведении */
 }
