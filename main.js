@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.querySelector('.mobile-menu');
   const menuContainer = document.querySelector('.mobile-menu-container');
   const loadingElement = document.querySelector('.loading');
+  const menuItems = document.querySelectorAll('.mobile-menu li a');
 
   let isScrolled = false;
   let isMenuOpen = true;
@@ -214,7 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.toggle('hidden');
       mobileMenuButton.classList.toggle('active');
 
+      // Добавляем или удаляем класс для прозрачности контейнера
       if (isMenuOpen) {
+        menuContainer.classList.add('transparent');
         const logo = menuContainer.querySelector('.mobile-header__logo');
         const socials = menuContainer.querySelector('.mobile-header__socials');
         if (logo) logo.style.display = 'none';
@@ -222,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (loadingElement) loadingElement.style.display = 'none';
       } else {
+        menuContainer.classList.remove('transparent');
         const logo = menuContainer.querySelector('.mobile-header__logo');
         const socials = menuContainer.querySelector('.mobile-header__socials');
         if (logo) logo.style.display = 'block';
@@ -271,6 +275,30 @@ document.addEventListener('DOMContentLoaded', () => {
           isScrolled = false;
         }
       }
+    });
+
+    menuItems.forEach((item) => {
+      item.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const targetSection = document.querySelector(item.getAttribute('href'));
+
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.classList.remove('active');
+
+        const logo = menuContainer.querySelector('.mobile-header__logo');
+        const socials = menuContainer.querySelector('.mobile-header__socials');
+        if (logo) logo.style.display = 'block';
+        if (socials) socials.style.display = 'flex';
+        if (loadingElement) loadingElement.style.display = 'block';
+
+        isMenuOpen = true;
+        menuContainer.classList.remove('transparent');
+      });
     });
   }
 });
