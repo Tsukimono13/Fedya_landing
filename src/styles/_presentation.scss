@@ -122,51 +122,6 @@
         }
     }
 
-
-    // &__glitch {
-    //     position: absolute;
-    //     width: 100%;
-    //     left: 0;
-    //     mix-blend-mode: soft-light;
-    //     z-index: 1;
-
-
-    //     &--first {
-    //         top: 109px;
-    //     }
-
-    //     &--second {
-    //         top: 334px;
-
-    //     }
-
-    //     &--third {
-    //         top: 472px;
-    //     }
-
-    //     &--fourth {
-    //         top: 492px;
-    //     }
-    // }
-
-    // &__glitch-wrap {
-    //     display: flex;
-    //     overflow: hidden;
-    //     // position: relative;
-    //     position: absolute;
-    //     width: 100%;
-    //     top: 109px;
-    //     left: 0;
-    //     mix-blend-mode: soft-light;
-    //     z-index: 1;
-    // }
-
-    // &__glitch {
-    //     flex-shrink: 0;
-    //     width: auto;
-    //     height: auto;
-    // }
-
     &__logo {
         position: absolute;
         top: 60px;
@@ -199,7 +154,7 @@
 
         &__title {
             font-family: 'Long Shot', sans-serif;
-            font-size: clamp(79px, 13vw, 174px);
+            font-size: clamp(87px, 13vw, 174px);
             font-weight: 400;
             line-height: clamp(103px, 14vw, 208.8px);
             text-transform: uppercase;
@@ -282,6 +237,10 @@
     &__photo {
         overflow: hidden;
         height: 156px;
+
+        @media screen and (max-width: 651px) {
+            height: 101px;
+        }
     }
 
     &__person {

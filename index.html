@@ -13,13 +13,22 @@
     <title>Theo Ivanov</title>
   </head>
   <body class="main_body">
-    <div class="preloading">
+    <!-- <div class="preloading">
       <img src="assets/icons/Logo.svg" alt="logo" class="preloading__logo" />
-    </div>
+    </div> -->
     <div>
       <!-- Header -->
       <header id="header">
         <div class="loading"></div>
+        <div class="mobile-menu-container">
+          <button class="mobile-menu-button">
+            <div class="menu-icon">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </button>
+        </div>
         <div class="container">
           <nav class="menu menu--left">
             <button class="menu__button menu__button--faq">FAQ</button>
@@ -60,6 +69,51 @@
               </li>
             </ul>
           </nav>
+        </div>
+        <div class="mobile-menu hidden">
+          <img
+            src="assets/icons/Logo.svg"
+            alt="logo"
+            class="mobile-menu__logo"
+          />
+          <ul class="mobile-menu__links">
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#session">How to book</a></li>
+            <li><a href="#me">About Me</a></li>
+            <li><a href="#project">My Projects</a></li>
+          </ul>
+          <a
+            href="https://www.instagram.com/iftattoo/"
+            target="_blank"
+            class="common__link common__link--presentation"
+            >CONTACT ME NOW</a
+          >
+          <ul class="mobile-menu__socials">
+            <li>
+              <a
+                href="https://www.instagram.com/iftattoo/"
+                target="_blank"
+                title="Instagram"
+                class="menu__link menu__link--inst"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://api.whatsapp.com/send/?phone=13477512173&text&type=phone_number&app_absent=0"
+                target="_blank"
+                title="Whatsapp"
+                class="menu__link menu__link--watsapp"
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://t.me/rispit"
+                target="_blank"
+                title="Telegram"
+                class="menu__link menu__link--tg"
+              ></a>
+            </li>
+          </ul>
         </div>
       </header>
 
@@ -139,10 +193,6 @@
               <p>Darkness</p>
               <p>Horror</p>
               <p>Style</p>
-              <p>Tattoo</p>
-              <p>Darkness</p>
-              <p>Horror</p>
-              <p>Style</p>
             </div>
           </div>
         </section>
@@ -163,13 +213,13 @@
                 meticulous and extra-detailed b&g realism techniques.
               </p>
               <div class="projects__details__link">
-              <a
-                href="https://www.instagram.com/iftattoo/"
-                target="_blank"
-                class="common__link common__link--projects"
-                >SEE MORE WORK</a
-              >
-            </div>
+                <a
+                  href="https://www.instagram.com/iftattoo/"
+                  target="_blank"
+                  class="common__link common__link--projects"
+                  >SEE MORE WORK</a
+                >
+              </div>
             </div>
 
             <div class="carousel">
@@ -276,34 +326,42 @@
                 lazy="loading"
               />
             </div>
-            </div>
           </div>
         </section>
 
         <!-- How to book a session -->
         <section class="booking" id="session">
-          <img
-            src="assets/images/atWork.png"
-            alt="Theo at work"
-            class="booking__work-img"
-            lazy="loading"
-          />
-          <div class="booking__steps">
-            <h3 class="title title--booking">How to book a session</h3>
-            <ul class="booking__list">
-              <li class="booking__list__item">Text me and describe your idea.</li>
-              <li class="booking__list__item">Come in for a free personal consultation.</li>
-              <li class="booking__list__item">Develop the design with me.</li>
-              <li class="booking__list__item">Pick a date for the session.</li>
-              <li class="booking__list__item">Get your tattoo.</li>
-              <li class="booking__list__item">Enjoy the result!</li>
-            </ul>
-            <a
-              href="https://www.instagram.com/iftattoo/"
-              target="_blank"
-              class="common__link common__link--booking"
-              >Get a free consultation</a
-            >
+          <div class="booking__work">
+            <img
+              src="assets/images/atWork.png"
+              alt="Theo at work"
+              class="booking__work-img"
+              loading="lazy"
+              height="672"
+            />
+            <div class="booking__steps">
+              <h3 class="title title--booking">How to book a session</h3>
+              <ul class="booking__list">
+                <li class="booking__list__item">
+                  Text me and describe your idea.
+                </li>
+                <li class="booking__list__item">
+                  Come in for a free personal consultation.
+                </li>
+                <li class="booking__list__item">Develop the design with me.</li>
+                <li class="booking__list__item">
+                  Pick a date for the session.
+                </li>
+                <li class="booking__list__item">Get your tattoo.</li>
+                <li class="booking__list__item">Enjoy the result!</li>
+              </ul>
+              <a
+                href="https://www.instagram.com/iftattoo/"
+                target="_blank"
+                class="common__link common__link--booking"
+                >Get a free consultation</a
+              >
+            </div>
           </div>
           <div class="booking__design container">
             <img
@@ -355,7 +413,7 @@
                 <p>
                   How much does it cost? It's free! This helps us get better
                   results and communicate more effectively. We’ll understand
-                  each other better by discussing the design in prison.
+                  each other better by discussing the design in person.
                 </p>
               </div>
               <div class="booking__design__steps__item">
@@ -391,7 +449,7 @@
                   <img src="assets/icons/faq_icon.svg" alt="Open icon" />
                 </button>
               </div>
-              <div class="faq__item__body">
+              <div class="faq__item__body faq__item__body--flex">
                 <p>
                   A tattoo is a stress and trauma for the body. So, I recommend
                   choosing a session date with the healing process in mind.

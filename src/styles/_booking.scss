@@ -5,14 +5,22 @@
     background-size: cover;
     position: relative;
 
+    &__work {
+        @media screen and (min-width: 2000px) {
+            display: flex;
+            gap: 107px;
+            justify-content: center;
+        }
+    }
+
     &__work-img {
         position: absolute;
-        left: 0;
+        left: -81px;
         top: -63px;
 
         @media screen and (max-width: 651px) {
             top: -44px;
-            width: 320px;
+            width: 379px;
             height: 370px;
         }
 
@@ -20,6 +28,11 @@
             top: -63px;
             width: 480px;
             height: 530px;
+        }
+
+        @media screen and (min-width: 2000px) {
+            position: relative;
+            left: 0;
         }
     }
 
@@ -32,6 +45,10 @@
 
         @media (min-width: 651px) and (max-width: 1111px) {
             padding: 500px 32px 0;
+        }
+
+        @media screen and (min-width: 2000px) {
+            padding: 54px 0 0;
         }
     }
 

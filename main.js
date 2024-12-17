@@ -45,10 +45,8 @@ const slides = document.querySelectorAll('.carousel-item');
 let currentIndex = 0;
 const totalSlides = slides.length;
 
-// Функция для обновления слайдов
 function updateSlides() {
-  // Определяем, находимся ли на мобильной версии
-  const isMobile = window.innerWidth <= 1111; // Условие для мобильных устройств
+  const isMobile = window.innerWidth <= 1111;
 
   slides.forEach((slide, index) => {
     slide.classList.remove('active', 'next-slide', 'prev-slide');
@@ -61,24 +59,21 @@ function updateSlides() {
     }
   });
 
-  // Для мобильных устройств не делаем сдвиг, устанавливаем x: 0
   if (isMobile) {
     gsap.to(carouselContainer, {
-      x: 0, // Устанавливаем положение контейнера в 0
-      duration: 0.5,
+      x: 0,
+      duration: 0.7,
       ease: 'power2.out',
     });
   } else {
-    // Для других устройств продолжаем сдвигать контейнер
     gsap.to(carouselContainer, {
       x: -currentIndex * 33.33 + '%',
-      duration: 0.5,
+      duration: 0.7,
       ease: 'power2.out',
     });
   }
 }
 
-// Слушаем события на кнопки
 prevButton.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
   updateSlides();
@@ -89,19 +84,18 @@ nextButton.addEventListener('click', () => {
   updateSlides();
 });
 
-// Инициализация слайдов при загрузке
 updateSlides();
-
-// Слушаем изменение размера окна для обновления слайдов при изменении размера экрана
 window.addEventListener('resize', updateSlides);
 
 //tag animation
 gsap.registerPlugin(ScrollTrigger);
 
 const tags = document.querySelector('.tag-wrap');
-const clonedTags = tags.cloneNode(true);
-tags.parentNode.appendChild(clonedTags);
-
+const numberOfCopies = 3;
+for (let i = 0; i < numberOfCopies; i++) {
+  const clonedTags = tags.cloneNode(true);
+  tags.parentNode.appendChild(clonedTags);
+}
 gsap.to('.tag-wrap', {
   x: '-100%',
   duration: 26,
@@ -192,6 +186,81 @@ function glitchEffect(image) {
 
 glitchImages.forEach((image) => {
   glitchEffect(image);
+});
+
+// mobile menu
+document.addEventListener('DOMContentLoaded', () => {
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const menuContainer = document.querySelector('.mobile-menu-container');
+  const loadingElement = document.querySelector('.loading');
+
+  let isScrolled = false;
+  let isMenuOpen = true;
+
+  // Добавляем проверку на ширину экрана
+  if (window.innerWidth <= 1111) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenuButton.classList.toggle('active');
+
+      if (isMenuOpen) {
+        const logo = menuContainer.querySelector('.mobile-header__logo');
+        const socials = menuContainer.querySelector('.mobile-header__socials');
+        if (logo) logo.style.display = 'none';
+        if (socials) socials.style.display = 'none';
+
+        if (loadingElement) loadingElement.style.display = 'none';
+      } else {
+        const logo = menuContainer.querySelector('.mobile-header__logo');
+        const socials = menuContainer.querySelector('.mobile-header__socials');
+        if (logo) logo.style.display = 'block';
+        if (socials) socials.style.display = 'flex';
+
+        if (loadingElement) loadingElement.style.display = 'block';
+      }
+
+      isMenuOpen = !isMenuOpen;
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        if (!isScrolled) {
+          menuContainer.classList.add('fixed');
+          mobileMenuButton.classList.add('scrolled');
+
+          if (!menuContainer.querySelector('.mobile-header__logo')) {
+            const logo = document.createElement('img');
+            logo.src = 'assets/icons/Logo.svg';
+            logo.alt = 'Logo';
+            logo.className = 'mobile-header__logo';
+            menuContainer.appendChild(logo);
+          }
+
+          if (!menuContainer.querySelector('.mobile-header__socials')) {
+            const socials = document.createElement('ul');
+            socials.className = 'mobile-header__socials';
+            socials.innerHTML = `
+              <li><a href="https://www.instagram.com/iftattoo/" target="_blank" class="menu__link menu__link--inst"></a></li>
+              <li><a href="https://api.whatsapp.com/send/?phone=13477512173" target="_blank" class="menu__link menu__link--watsapp"></a></li>
+              <li><a href="https://t.me/rispit" target="_blank" class="menu__link menu__link--tg"></a></li>
+            `;
+            menuContainer.appendChild(socials);
+          }
+
+          isScrolled = true;
+        }
+      } else {
+        if (isScrolled) {
+          menuContainer.classList.remove('fixed');
+          mobileMenuButton.classList.remove('scrolled');
+          menuContainer.innerHTML = '';
+          menuContainer.appendChild(mobileMenuButton);
+          isScrolled = false;
+        }
+      }
+    });
+  }
 });
 
 // preloader
@@ -325,8 +394,8 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.projects',
-          start: 'top 20%',
-          end: 'top 0%',
+          start: 'top 30%',
+          end: 'top 15%',
           scrub: true,
         },
       },
@@ -438,12 +507,12 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
       },
       {
         x: 0,
-        duration: 1.5,
+        duration: 1.6,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.booking',
-          start: 'top 90%',
-          end: 'top 30%',
+          start: 'top 60%',
+          end: 'top 20%',
           scrub: true,
         },
       },
@@ -457,13 +526,13 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
       {
         y: 0,
         opacity: 1,
-        duration: 0.6,
+        duration: 0.4,
         ease: 'power2.out',
-        stagger: 0.1,
+        stagger: 0.07,
         scrollTrigger: {
           trigger: '.booking',
           start: 'top 50%',
-          end: 'top 10%',
+          end: 'top 30%',
           scrub: true,
         },
       },
@@ -982,6 +1051,391 @@ mm.add('(max-width: 1111px)', () => {
     )
     .fromTo(
       '.footer .title',
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.footer',
+          start: 'top 70%',
+          end: 'top 50%',
+          scrub: true,
+        },
+      },
+    );
+});
+
+mm.add('(min-width: 2024px)', () => {
+  tlLoader
+    .to(
+      '.preloading__logo',
+      {
+        scale: 0.9,
+        duration: 0.9,
+        repeat: 2,
+        yoyo: true,
+        ease: 'power1.inOut',
+      },
+      '+=0.1',
+    )
+
+    .to('.preloading', {
+      yPercent: -100,
+      duration: 2,
+      ease: 'power2.inOut',
+    })
+    .fromTo(
+      '.presentation__name__title',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      },
+    )
+    .fromTo(
+      '.presentation__name__details--title',
+      {
+        opacity: 0,
+        y: '-100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: 'power2.out',
+      },
+    )
+    .add(
+      gsap.fromTo(
+        '.menu--left',
+        {
+          opacity: 0,
+          x: -100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+        },
+      ),
+    )
+    .add(
+      gsap.fromTo(
+        '.menu--right',
+        {
+          opacity: 0,
+          x: 100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+        },
+      ),
+      '<',
+    )
+    .fromTo(
+      '.title--projects',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      },
+    )
+    .fromTo(
+      '.projects__details__text',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      },
+    )
+    .fromTo(
+      '.common__link--projects',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+      },
+    )
+    .fromTo(
+      '.title--about',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 90%',
+          end: 'top 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__details__text',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 70%',
+          end: 'top 30%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__link',
+      {
+        opacity: 0,
+        y: '100%',
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 60%',
+          end: 'top 30%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__person--back',
+      {
+        opacity: 0,
+        y: 100,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 75%',
+          end: 'top 30%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.about__person--front',
+      {
+        opacity: 0,
+        y: 100,
+        scale: 0.8,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.0,
+        scale: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top 65%',
+          end: 'top 20%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__work-img',
+      {
+        x: '-100%',
+      },
+      {
+        x: 0,
+        duration: 1.5,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 90%',
+          end: 'top 30%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__list__item',
+      {
+        y: '-100%',
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 60%',
+          end: 'top 20%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__design__angle--top-left',
+      {
+        x: -200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'top 60%',
+          end: 'top 20%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__design__angle',
+      {
+        scale: 0.6,
+      },
+      {
+        scale: 1,
+        duration: 0.3,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'middle 30%',
+          end: 'bottom 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.booking__design__steps__item',
+      {
+        x: -200,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: 'power2.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.booking',
+          start: 'middle 30%',
+          end: 'bottom 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.title--faq',
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.faq',
+          start: 'top 70%',
+          end: 'top 40%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.faq__item',
+      {
+        scale: 0,
+      },
+      {
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.faq',
+          start: 'top 80%',
+          end: 'bottom 60%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.footer .title',
+      {
+        opacity: 0,
+        y: 50,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: 'power2.out',
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: '.footer',
+          start: 'top 80%',
+          end: 'top 60%',
+          scrub: true,
+        },
+      },
+    )
+    .fromTo(
+      '.common__link--footer',
       {
         opacity: 0,
         y: 50,
