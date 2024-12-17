@@ -196,7 +196,7 @@
   }
 
   @media screen and (max-width: 651px) {
-     width: 296px;
+    width: 296px;
   }
 
   &:last-child {
@@ -211,14 +211,14 @@
 .carousel-item.active img {
   height: 100%;
   width: 100%;
-  clip-path: polygon(31px 0%,
-      calc(100% - 31px) 0%,
-      100% 31px,
-      100% calc(100% - 31px),
-      calc(100% - 31px) 100%,
-      31px 100%,
-      0% calc(100% - 31px),
-      0% 31px);
+  clip-path: polygon(28px 0%,
+      calc(100% - 28px) 0%,
+      100% 28px,
+      100% calc(100% - 28px),
+      calc(100% - 28px) 100%,
+      28px 100%,
+      0% calc(100% - 28px),
+      0% 28px);
 }
 
 .carousel-item.next-slide {
