@@ -198,7 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let isScrolled = false;
   let isMenuOpen = true;
 
-  // Добавляем проверку на ширину экрана
   if (window.innerWidth <= 1111) {
     mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
@@ -224,6 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('scroll', () => {
+      if (!mobileMenu.classList.contains('hidden') && isMenuOpen) return;
+
       if (window.scrollY > 100) {
         if (!isScrolled) {
           menuContainer.classList.add('fixed');
