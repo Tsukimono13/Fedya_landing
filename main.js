@@ -113,6 +113,17 @@ document.body.appendChild(scrollTopButton);
 
 scrollTopButton.classList.add('menu__link', 'menu__link--scroll-top');
 
+function checkScreenWidth() {
+  if (window.innerWidth > 1111) {
+    scrollTopButton.style.display = 'block';
+  } else {
+    scrollTopButton.style.display = 'none';
+  }
+}
+
+checkScreenWidth();
+window.addEventListener('resize', checkScreenWidth);
+
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -701,9 +712,8 @@ mm.add('(max-width: 1111px)', () => {
       },
       '+=0.1',
     )
-
     .to('.preloading', {
-      yPercent: -100,
+      transform: 'translateY(-100%)',
       duration: 2,
       ease: 'power2.inOut',
     })

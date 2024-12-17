@@ -184,12 +184,10 @@
 
 .menu__link--scroll-top.scrolled {
     background-image: url("/assets/icons/toTop_hover.svg");
-    /* Изменение изображения при прокрутке */
 }
 
 .menu__link--scroll-top.scrolled:hover {
     background-image: url("/assets/icons/toTop.svg");
-    /* Изменение изображения при наведении */
 }
 
 
