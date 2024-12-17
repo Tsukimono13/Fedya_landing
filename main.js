@@ -713,7 +713,7 @@ mm.add('(max-width: 1111px)', () => {
       '+=0.1',
     )
     .to('.preloading', {
-      transform: 'translateY(-100%)',
+      yPercent: -100,
       duration: 2,
       ease: 'power2.inOut',
     })
