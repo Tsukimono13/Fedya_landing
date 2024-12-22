@@ -30,6 +30,13 @@
             overflow: hidden;
         }
 
+        &__link {
+            @media (min-width: 651px) and (max-width: 1111px) {
+                display: flex;
+                justify-content: center;
+            }
+        }
+
         @media screen and (max-width: 651px) {
             padding-top: 0;
         }
@@ -67,7 +74,7 @@
                 height: 100%;
             }
 
-            @media (min-width: 651px) and (max-width: 1111px) {
+            @media (min-width: 651px) and (max-width: 1511px) {
                 width: 486px;
                 height: 643px;
             }

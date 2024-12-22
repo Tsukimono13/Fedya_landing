@@ -44,8 +44,6 @@ const slides = document.querySelectorAll('.carousel-item');
 
 let currentIndex = 0;
 const totalSlides = slides.length;
-let startX = 0;
-let isTouching = false;
 
 function updateSlides() {
   const isMobile = window.innerWidth <= 1111;
@@ -84,42 +82,6 @@ prevButton.addEventListener('click', () => {
 nextButton.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % totalSlides;
   updateSlides();
-});
-
-carouselContainer.addEventListener('touchstart', (e) => {
-  isTouching = true;
-  startX = e.touches[0].clientX; // Сохраняем начальную позицию касания
-});
-
-carouselContainer.addEventListener('touchmove', (e) => {
-  if (!isTouching) return;
-
-  const moveX = e.touches[0].clientX - startX; // Рассчитываем смещение по оси X
-  gsap.set(carouselContainer, { x: -currentIndex * 33.33 + '%' + moveX * 0.5 }); // Анимируем перемещение
-});
-
-carouselContainer.addEventListener('touchend', (e) => {
-  if (!isTouching) return;
-
-  const endX = e.changedTouches[0].clientX; // Сохраняем конечную позицию касания
-  const moveX = endX - startX;
-
-  if (moveX < -50) {
-    // Если движение влево больше чем на 50px, то переключаем на следующий слайд
-    currentIndex = (currentIndex + 1) % totalSlides;
-  } else if (moveX > 50) {
-    // Если движение вправо больше чем на 50px, то переключаем на предыдущий слайд
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-  }
-
-  // Завершаем анимацию на месте
-  gsap.to(carouselContainer, {
-    x: -currentIndex * 33.33 + '%',
-    duration: 0.3,
-    ease: 'power2.out',
-  });
-
-  isTouching = false;
 });
 
 updateSlides();
@@ -253,7 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.toggle('hidden');
       mobileMenuButton.classList.toggle('active');
 
+      // Блокировка прокрутки
       if (isMenuOpen) {
+        document.body.style.overflow = 'hidden'; // Блокируем прокрутку
         menuContainer.classList.add('transparent');
         const logo = menuContainer.querySelector('.mobile-header__logo');
         const socials = menuContainer.querySelector('.mobile-header__socials');
@@ -262,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (loadingElement) loadingElement.style.display = 'none';
       } else {
+        document.body.style.overflow = ''; // Разблокируем прокрутку
         menuContainer.classList.remove('transparent');
         const logo = menuContainer.querySelector('.mobile-header__logo');
         const socials = menuContainer.querySelector('.mobile-header__socials');
@@ -336,6 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.add('hidden');
         mobileMenuButton.classList.remove('active');
 
+        document.body.style.overflow = '';
+
         const logo = menuContainer.querySelector('.mobile-header__logo');
         const socials = menuContainer.querySelector('.mobile-header__socials');
         if (logo) logo.style.display = 'block';
@@ -353,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const tlLoader = gsap.timeline();
 const mm = gsap.matchMedia();
 
-mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
+mm.add('(min-width: 1510px) and (max-width: 2024px)', () => {
   tlLoader
     .to(
       '.preloading__logo',
@@ -758,7 +725,7 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
     );
 });
 
-mm.add('(max-width: 1111px)', () => {
+mm.add('(max-width: 1510px)', () => {
   tlLoader
     .to(
       '.preloading__logo',
@@ -1002,7 +969,7 @@ mm.add('(max-width: 1111px)', () => {
         scrollTrigger: {
           trigger: '.booking',
           start: 'top 90%',
-          end: 'top 30%',
+          end: 'top 40%',
           scrub: true,
         },
       },
@@ -1022,25 +989,6 @@ mm.add('(max-width: 1111px)', () => {
         scrollTrigger: {
           trigger: '.booking',
           start: 'top 35%',
-          end: 'top 10%',
-          scrub: true,
-        },
-      },
-    )
-    .fromTo(
-      '.booking__design__angle--top-left',
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.booking',
-          start: 'top 60%',
           end: 'top 10%',
           scrub: true,
         },
@@ -1077,8 +1025,8 @@ mm.add('(max-width: 1111px)', () => {
         stagger: 0.2,
         scrollTrigger: {
           trigger: '.booking',
-          start: 'middle 30%',
-          end: 'bottom 60%',
+          start: 'middle 20%',
+          end: 'bottom 85%',
           scrub: true,
         },
       },

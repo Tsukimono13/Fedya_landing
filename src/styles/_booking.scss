@@ -293,6 +293,11 @@
         margin-bottom: 40px;
         text-align: center;
     }
+
+    @media (min-width: 651px) and (max-width: 1111px) {
+        max-width: 507px;
+        text-align: center;
+    }
 }
 
 .common__link--design {
