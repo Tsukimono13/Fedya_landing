@@ -68,7 +68,7 @@ function updateSlides() {
   } else {
     gsap.to(carouselContainer, {
       x: -currentIndex * 33.33 + '%',
-      duration: 0.7,
+      duration: 0.5,
       ease: 'power2.out',
     });
   }
@@ -214,8 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
       mobileMenuButton.classList.toggle('active');
-
-      // Добавляем или удаляем класс для прозрачности контейнера
+      
       if (isMenuOpen) {
         menuContainer.classList.add('transparent');
         const logo = menuContainer.querySelector('.mobile-header__logo');
@@ -533,7 +532,7 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.about',
-          start: 'top 40%',
+          start: 'top 50%',
           end: 'top 0%',
           scrub: true,
         },
@@ -551,8 +550,8 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.booking',
-          start: 'top 60%',
-          end: 'top 20%',
+          start: 'top 65%',
+          end: 'top 40%',
           scrub: true,
         },
       },
@@ -571,8 +570,8 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
         stagger: 0.07,
         scrollTrigger: {
           trigger: '.booking',
-          start: 'top 50%',
-          end: 'top 30%',
+          start: 'top 40%',
+          end: 'top 20%',
           scrub: true,
         },
       },
@@ -589,25 +588,6 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
           trigger: '.booking',
           start: 'top 80%',
           end: 'bottom',
-          scrub: true,
-        },
-      },
-    )
-    .fromTo(
-      '.booking__design__angle--top-left',
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.booking',
-          start: 'top 60%',
-          end: 'top 10%',
           scrub: true,
         },
       },
@@ -638,14 +618,15 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
       {
         x: 0,
         opacity: 1,
-        duration: 0.6,
+        duration: 0.4,
         ease: 'power2.out',
-        stagger: 0.1,
+        stagger: 0.06,
         scrollTrigger: {
           trigger: '.booking',
-          start: 'middle 20%',
-          end: 'bottom 45%',
+          start: 'middle 10%',
+          end: 'bottom 100%',
           scrub: true,
+          once: true,
         },
       },
     )
@@ -653,10 +634,12 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
       '.title--faq',
       {
         opacity: 0,
+        y: '100%',
       },
       {
         opacity: 1,
         duration: 0.6,
+        y: 0,
         ease: 'power2.out',
         stagger: 0.2,
         scrollTrigger: {
@@ -682,6 +665,7 @@ mm.add('(min-width: 1111px) and (max-width: 2024px)', () => {
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
+          once: true,
         },
       },
     )
@@ -1085,6 +1069,7 @@ mm.add('(max-width: 1111px)', () => {
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
+          once: true,
         },
       },
     )
@@ -1356,26 +1341,7 @@ mm.add('(min-width: 2024px)', () => {
         scrollTrigger: {
           trigger: '.booking',
           start: 'top 60%',
-          end: 'top 20%',
-          scrub: true,
-        },
-      },
-    )
-    .fromTo(
-      '.booking__design__angle--top-left',
-      {
-        x: -200,
-        opacity: 0,
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.booking',
-          start: 'top 60%',
-          end: 'top 20%',
+          end: 'top 40%',
           scrub: true,
         },
       },
@@ -1408,12 +1374,13 @@ mm.add('(min-width: 2024px)', () => {
         opacity: 1,
         duration: 0.5,
         ease: 'power2.out',
-        stagger: 0.1,
+        stagger: 0.08,
         scrollTrigger: {
           trigger: '.booking',
           start: 'middle 30%',
           end: 'bottom 40%',
           scrub: true,
+          once: true,
         },
       },
     )
@@ -1421,9 +1388,11 @@ mm.add('(min-width: 2024px)', () => {
       '.title--faq',
       {
         opacity: 0,
+        y: 30,
       },
       {
         opacity: 1,
+        y: 0,
         duration: 0.6,
         ease: 'power2.out',
         stagger: 0.2,
@@ -1450,6 +1419,7 @@ mm.add('(min-width: 2024px)', () => {
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
+          once: true,
         },
       },
     )
