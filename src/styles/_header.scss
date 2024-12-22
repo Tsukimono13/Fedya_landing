@@ -271,6 +271,7 @@
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
+    transition: all 0.3s ease;
 }
 
 .mobile-menu__links {
@@ -304,10 +305,14 @@
         position: absolute;
         top: 12px;
         left: 16px;
-        z-index: 10;
+        z-index: 999;
     }
 }
 
+// .mobile-menu-container {
+//     background-color: transparent;
+//     transition: background-color 0.3s ease;
+// }
 
 .mobile-menu-container.fixed {
     position: fixed;
@@ -320,7 +325,7 @@
     align-items: center;
     justify-content: space-between;
     z-index: 999;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 
 
     .mobile-header__logo {
@@ -344,7 +349,7 @@
 .mobile-menu-container.transparent {
     background-color: transparent;
     transition: background-color 0.3s ease;
-  }
+}
 
 .mobile-menu-button.scrolled {
     position: unset;

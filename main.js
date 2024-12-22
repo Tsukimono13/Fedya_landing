@@ -44,6 +44,8 @@ const slides = document.querySelectorAll('.carousel-item');
 
 let currentIndex = 0;
 const totalSlides = slides.length;
+let startX = 0;
+let isTouching = false;
 
 function updateSlides() {
   const isMobile = window.innerWidth <= 1111;
@@ -82,6 +84,42 @@ prevButton.addEventListener('click', () => {
 nextButton.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % totalSlides;
   updateSlides();
+});
+
+carouselContainer.addEventListener('touchstart', (e) => {
+  isTouching = true;
+  startX = e.touches[0].clientX; // Сохраняем начальную позицию касания
+});
+
+carouselContainer.addEventListener('touchmove', (e) => {
+  if (!isTouching) return;
+
+  const moveX = e.touches[0].clientX - startX; // Рассчитываем смещение по оси X
+  gsap.set(carouselContainer, { x: -currentIndex * 33.33 + '%' + moveX * 0.5 }); // Анимируем перемещение
+});
+
+carouselContainer.addEventListener('touchend', (e) => {
+  if (!isTouching) return;
+
+  const endX = e.changedTouches[0].clientX; // Сохраняем конечную позицию касания
+  const moveX = endX - startX;
+
+  if (moveX < -50) {
+    // Если движение влево больше чем на 50px, то переключаем на следующий слайд
+    currentIndex = (currentIndex + 1) % totalSlides;
+  } else if (moveX > 50) {
+    // Если движение вправо больше чем на 50px, то переключаем на предыдущий слайд
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  }
+
+  // Завершаем анимацию на месте
+  gsap.to(carouselContainer, {
+    x: -currentIndex * 33.33 + '%',
+    duration: 0.3,
+    ease: 'power2.out',
+  });
+
+  isTouching = false;
 });
 
 updateSlides();
@@ -214,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenuButton.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
       mobileMenuButton.classList.toggle('active');
-      
+
       if (isMenuOpen) {
         menuContainer.classList.add('transparent');
         const logo = menuContainer.querySelector('.mobile-header__logo');
@@ -244,6 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
           menuContainer.classList.add('fixed');
           mobileMenuButton.classList.add('scrolled');
 
+          // Добавляем логотип, если он не существует
           if (!menuContainer.querySelector('.mobile-header__logo')) {
             const logo = document.createElement('img');
             logo.src = 'assets/icons/Logo.svg';
@@ -252,6 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuContainer.appendChild(logo);
           }
 
+          // Добавляем соц. ссылки, если их нет
           if (!menuContainer.querySelector('.mobile-header__socials')) {
             const socials = document.createElement('ul');
             socials.className = 'mobile-header__socials';
@@ -269,8 +309,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isScrolled) {
           menuContainer.classList.remove('fixed');
           mobileMenuButton.classList.remove('scrolled');
-          menuContainer.innerHTML = '';
-          menuContainer.appendChild(mobileMenuButton);
+
+          // Убираем логотип и социальные ссылки
+          const logo = menuContainer.querySelector('.mobile-header__logo');
+          const socials = menuContainer.querySelector(
+            '.mobile-header__socials',
+          );
+          if (logo) logo.remove();
+          if (socials) socials.remove();
+
           isScrolled = false;
         }
       }
