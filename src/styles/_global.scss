@@ -13,6 +13,8 @@ body {
 
 img {
     display: block;
+    pointer-events: none;
+    user-select: none;
 }
 
 button {
