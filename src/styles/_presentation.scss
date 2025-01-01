@@ -142,10 +142,10 @@
         flex-wrap: wrap;
         position: relative;
         z-index: 2;
+        padding: 0 16px;
 
         @media screen and (max-width: 651px) {
             gap: 13px;
-            padding: 0 16px 0 16px;
         }
     }
 

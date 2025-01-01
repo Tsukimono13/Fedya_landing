@@ -1,5 +1,10 @@
 import './style.scss';
 import javascriptLogo from './javascript.svg';
+import Swiper from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Navigation, Pagination } from 'swiper/modules';
 
 //loading bar
 function updateProgressBar() {
@@ -36,8 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-//carousel slider
+// carousel slider
 const carouselContainer = document.querySelector('.carousel-container');
+const carousel = document.querySelector('.carousel');
+const swiperContainer = document.querySelector('.swiper');
 const prevButton = document.querySelector('.prev');
 const nextButton = document.querySelector('.next');
 const slides = document.querySelectorAll('.carousel-item');
@@ -85,7 +92,50 @@ nextButton.addEventListener('click', () => {
 });
 
 updateSlides();
-window.addEventListener('resize', updateSlides);
+
+let swiperInstance = null;
+
+function initializeSwiper() {
+  const isMobile = window.innerWidth <= 1111;
+
+  if (isMobile) {
+    carousel.style.display = 'none';
+    swiperContainer.classList.add('show'); // Используем класс вместо display
+    swiperContainer.style.display = 'block';
+
+    if (!swiperInstance) {
+      swiperInstance = new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        loop: true,
+      });
+    }
+  } else {
+    swiperContainer.classList.remove('show');
+    swiperContainer.style.display = 'none';
+    carousel.style.display = 'block';
+
+    if (swiperInstance) {
+      swiperInstance.destroy(true, true);
+      swiperInstance = null;
+    }
+  }
+}
+
+// Инициализация при загрузке страницы и изменении размера экрана
+initializeSwiper();
+window.addEventListener('resize', () => {
+  updateSlides();
+  initializeSwiper();
+});
 
 //tag animation
 gsap.registerPlugin(ScrollTrigger);
@@ -851,7 +901,7 @@ mm.add('(max-width: 1510px)', () => {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.projects',
-          start: 'top 20%',
+          start: 'top 30%',
           end: 'top 0%',
           scrub: true,
         },
