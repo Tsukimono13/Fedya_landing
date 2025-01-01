@@ -1407,8 +1407,7 @@ mm.add('(min-width: 2024px)', () => {
           scrub: true,
         },
       },
-    );
-  gsap
+    )
     .fromTo(
       '.booking__design__steps__item',
       {
@@ -1426,7 +1425,7 @@ mm.add('(min-width: 2024px)', () => {
           start: 'top 75%',
           end: 'bottom 70%',
           scrub: true,
-          once: true,
+          // once: true,
         },
       },
     )
