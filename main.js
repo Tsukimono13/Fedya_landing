@@ -1366,7 +1366,7 @@ mm.add('(min-width: 2024px)', () => {
         scrollTrigger: {
           trigger: '.booking',
           start: 'top 90%',
-          end: 'top 30%',
+          end: 'top 40%',
           scrub: true,
         },
       },
@@ -1407,7 +1407,8 @@ mm.add('(min-width: 2024px)', () => {
           scrub: true,
         },
       },
-    )
+    );
+  gsap
     .fromTo(
       '.booking__design__steps__item',
       {
@@ -1417,13 +1418,13 @@ mm.add('(min-width: 2024px)', () => {
       {
         x: 0,
         opacity: 1,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'power2.out',
-        stagger: 0.08,
+        stagger: 0.1,
         scrollTrigger: {
           trigger: '.booking',
-          start: 'middle 30%',
-          end: 'bottom 40%',
+          start: 'top 75%',
+          end: 'bottom 70%',
           scrub: true,
           once: true,
         },
