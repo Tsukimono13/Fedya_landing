@@ -326,3 +326,27 @@
   opacity: 1;
   background: #ff6600;
 }
+
+
+.custom-prev,
+.custom-next {
+  padding: 10px 20px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 24px;
+  z-index: 10;
+
+
+  img {
+    width: 72px;
+    height: 24px;
+  }
+}
+
+.custom-prev {
+  left: 50px;
+}
+
+.custom-next {
+  right: 50px;
+}

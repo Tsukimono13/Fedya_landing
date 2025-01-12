@@ -40,15 +40,7 @@
         }
 
         &--right {
-            right: 25px;
-            top: 945px;
-        }
-    }
-
-    @media screen and (max-width: 651px) {
-        &--right {
-            right: 25px;
-            top: 540px;
+            display: none;
         }
     }
 
@@ -92,6 +84,10 @@
 
     &--session {
         top: 135px;
+    }
+
+    &--faq {
+        top: 21px;
     }
 }
 
@@ -309,19 +305,10 @@
 @media (max-width: 1111px) {
     .mobile-menu-button {
         display: block;
-        position: absolute;
-        top: 12px;
-        left: 16px;
-        z-index: 999;
     }
 }
 
-// .mobile-menu-container {
-//     background-color: transparent;
-//     transition: background-color 0.3s ease;
-// }
-
-.mobile-menu-container.fixed {
+.mobile-menu-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -333,12 +320,13 @@
     justify-content: space-between;
     z-index: 999;
     transition: background-color 0.3s ease;
+    display: none;
 
 
     .mobile-header__logo {
         width: 32px;
         height: 32px;
-        margin-left: 62px;
+        margin-left: 74px;
     }
 
     .mobile-header__socials {
@@ -353,11 +341,12 @@
     }
 }
 
-.mobile-menu-container.transparent {
-    background-color: transparent;
-    transition: background-color 0.3s ease;
+.mobile-menu-container.menu-open {
+    z-index: 9999;
 }
 
-.mobile-menu-button.scrolled {
-    position: unset;
+@media (max-width: 1111px) {
+    .mobile-menu-container {
+        display: flex;
+    }
 }

@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const faqItemBody = faqItem.querySelector('.faq__item__body');
       const img = button.querySelector('img');
 
-      // Если тело уже открыто, скрываем его, иначе открываем
       if (faqItemBody.style.maxHeight) {
         faqItemBody.style.maxHeight = null;
         img.style.transform = 'rotate(0deg)';
@@ -99,10 +98,6 @@ function initializeSwiper() {
   const isMobile = window.innerWidth <= 1111;
 
   if (isMobile) {
-    carousel.style.display = 'none';
-    swiperContainer.classList.add('show'); // Используем класс вместо display
-    swiperContainer.style.display = 'block';
-
     if (!swiperInstance) {
       swiperInstance = new Swiper('.swiper', {
         slidesPerView: 1,
@@ -112,25 +107,34 @@ function initializeSwiper() {
           clickable: true,
         },
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: '.custom-next',
+          prevEl: '.custom-prev',
         },
         loop: true,
       });
     }
-  } else {
-    swiperContainer.classList.remove('show');
-    swiperContainer.style.display = 'none';
-    carousel.style.display = 'block';
 
+    carousel.style.display = 'none';
+    swiperContainer.style.display = 'block';
+  } else {
     if (swiperInstance) {
       swiperInstance.destroy(true, true);
       swiperInstance = null;
     }
+
+    swiperContainer.style.display = 'none';
+    carousel.style.display = 'block';
   }
 }
 
-// Инициализация при загрузке страницы и изменении размера экрана
+document.querySelector('.custom-next').addEventListener('click', () => {
+  swiperInstance.slideNext();
+});
+
+document.querySelector('.custom-prev').addEventListener('click', () => {
+  swiperInstance.slidePrev();
+});
+
 initializeSwiper();
 window.addEventListener('resize', () => {
   updateSlides();
@@ -249,121 +253,87 @@ glitchImages.forEach((image) => {
   glitchEffect(image);
 });
 
-// mobile menu
+//mobile menu
 document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuButton = document.querySelector('.mobile-menu-button');
   const mobileMenu = document.querySelector('.mobile-menu');
   const menuContainer = document.querySelector('.mobile-menu-container');
-  const loadingElement = document.querySelector('.loading');
   const menuItems = document.querySelectorAll('.mobile-menu li a');
 
-  let isScrolled = false;
-  let isMenuOpen = true;
+  let isMenuOpen = false;
 
-  if (window.innerWidth <= 1111) {
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      mobileMenuButton.classList.toggle('active');
+  const updateMenuVisibility = () => {
+    if (window.innerWidth > 1111) {
+      menuContainer.style.display = 'none';
+      closeMenu();
+    } else {
+      menuContainer.style.display = '';
+    }
+  };
 
-      // Блокировка прокрутки
-      if (isMenuOpen) {
-        document.body.style.overflow = 'hidden'; // Блокируем прокрутку
-        menuContainer.classList.add('transparent');
-        const logo = menuContainer.querySelector('.mobile-header__logo');
-        const socials = menuContainer.querySelector('.mobile-header__socials');
-        if (logo) logo.style.display = 'none';
-        if (socials) socials.style.display = 'none';
+  const toggleMenu = () => {
+    if (window.innerWidth > 1111) return;
 
-        if (loadingElement) loadingElement.style.display = 'none';
-      } else {
-        document.body.style.overflow = ''; // Разблокируем прокрутку
-        menuContainer.classList.remove('transparent');
-        const logo = menuContainer.querySelector('.mobile-header__logo');
-        const socials = menuContainer.querySelector('.mobile-header__socials');
-        if (logo) logo.style.display = 'block';
-        if (socials) socials.style.display = 'flex';
+    isMenuOpen = !isMenuOpen;
 
-        if (loadingElement) loadingElement.style.display = 'block';
+    mobileMenu.classList.toggle('hidden', !isMenuOpen);
+    mobileMenuButton.classList.toggle('active', isMenuOpen);
+
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+
+    if (menuContainer) {
+      menuContainer.classList.toggle('menu-open', isMenuOpen);
+    }
+
+    const logo = menuContainer.querySelector('.mobile-header__logo');
+    const socials = menuContainer.querySelector('.mobile-header__socials');
+    if (logo) logo.style.display = isMenuOpen ? 'none' : 'block';
+    if (socials) socials.style.display = isMenuOpen ? 'none' : 'flex';
+  };
+
+  const closeMenu = () => {
+    isMenuOpen = false;
+    mobileMenu.classList.add('hidden');
+    mobileMenuButton.classList.remove('active');
+    document.body.style.overflow = '';
+
+    if (menuContainer) {
+      menuContainer.classList.remove('menu-open');
+    }
+
+    const logo = menuContainer.querySelector('.mobile-header__logo');
+    const socials = menuContainer.querySelector('.mobile-header__socials');
+    if (logo) logo.style.display = 'block';
+    if (socials) socials.style.display = 'flex';
+  };
+
+  mobileMenuButton.addEventListener('click', toggleMenu);
+
+  menuItems.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      const targetSection = document.querySelector(item.getAttribute('href'));
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      isMenuOpen = !isMenuOpen;
+      closeMenu();
     });
+  });
 
-    window.addEventListener('scroll', () => {
-      if (!mobileMenu.classList.contains('hidden') && isMenuOpen) return;
+  document.addEventListener('click', (event) => {
+    if (
+      isMenuOpen &&
+      !menuContainer.contains(event.target) &&
+      !mobileMenuButton.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
 
-      if (window.scrollY > 100) {
-        if (!isScrolled) {
-          menuContainer.classList.add('fixed');
-          mobileMenuButton.classList.add('scrolled');
-
-          // Добавляем логотип, если он не существует
-          if (!menuContainer.querySelector('.mobile-header__logo')) {
-            const logo = document.createElement('img');
-            logo.src = 'assets/icons/Logo.svg';
-            logo.alt = 'Logo';
-            logo.className = 'mobile-header__logo';
-            menuContainer.appendChild(logo);
-          }
-
-          // Добавляем соц. ссылки, если их нет
-          if (!menuContainer.querySelector('.mobile-header__socials')) {
-            const socials = document.createElement('ul');
-            socials.className = 'mobile-header__socials';
-            socials.innerHTML = `
-              <li><a href="https://www.instagram.com/iftattoo/" target="_blank" class="menu__link menu__link--inst"></a></li>
-              <li><a href="https://api.whatsapp.com/send/?phone=13477512173" target="_blank" class="menu__link menu__link--watsapp"></a></li>
-              <li><a href="https://t.me/rispit" target="_blank" class="menu__link menu__link--tg"></a></li>
-            `;
-            menuContainer.appendChild(socials);
-          }
-
-          isScrolled = true;
-        }
-      } else {
-        if (isScrolled) {
-          menuContainer.classList.remove('fixed');
-          mobileMenuButton.classList.remove('scrolled');
-
-          // Убираем логотип и социальные ссылки
-          const logo = menuContainer.querySelector('.mobile-header__logo');
-          const socials = menuContainer.querySelector(
-            '.mobile-header__socials',
-          );
-          if (logo) logo.remove();
-          if (socials) socials.remove();
-
-          isScrolled = false;
-        }
-      }
-    });
-
-    menuItems.forEach((item) => {
-      item.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        const targetSection = document.querySelector(item.getAttribute('href'));
-
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        mobileMenu.classList.add('hidden');
-        mobileMenuButton.classList.remove('active');
-
-        document.body.style.overflow = '';
-
-        const logo = menuContainer.querySelector('.mobile-header__logo');
-        const socials = menuContainer.querySelector('.mobile-header__socials');
-        if (logo) logo.style.display = 'block';
-        if (socials) socials.style.display = 'flex';
-        if (loadingElement) loadingElement.style.display = 'block';
-
-        isMenuOpen = true;
-        menuContainer.classList.remove('transparent');
-      });
-    });
-  }
+  window.addEventListener('resize', updateMenuVisibility);
+  updateMenuVisibility();
 });
 
 // preloader

@@ -9,7 +9,7 @@
         padding: 64px 16px 0;
     }
 
-    @media screen and (max-width: 1111px) {
+    @media (min-width: 651px) and (max-width: 1111px) {
         padding: 132px 37px 0 32px;
     }
 
@@ -19,6 +19,7 @@
 
         @media screen and (max-width: 1111px) {
             flex-wrap: wrap;
+            gap: 33px;
         }
     }
 
@@ -75,8 +76,8 @@
             }
 
             @media (min-width: 651px) and (max-width: 1511px) {
-                width: 486px;
-                height: 643px;
+                width: 556px;
+                height: 745px;
             }
         }
     }
