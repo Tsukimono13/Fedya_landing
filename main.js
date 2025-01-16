@@ -1150,6 +1150,27 @@ mm.add('(max-width: 1510px)', () => {
     //     },
     //   },
     // )
+    // .fromTo(
+    //   '.faq__item',
+    //   {
+    //     scale: 0.8,
+    //     opacity: 0,
+    //   },
+    //   {
+    //     scale: 1,
+    //     opacity: 1,
+    //     duration: 0.8,
+    //     stagger: 0.2,
+    //     ease: 'elastic.out(1, 0.5)',
+    //     scrollTrigger: {
+    //       trigger: '.faq',
+    //       start: 'top 80%',
+    //       end: 'bottom 60%',
+    //       scrub: true,
+    //       // once: true,
+    //     },
+    //   },
+    // )
     .fromTo(
       '.footer .title',
       {
