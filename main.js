@@ -683,26 +683,67 @@ mm.add('(min-width: 1510px) and (max-width: 2024px)', () => {
           scrub: true,
         },
       },
-    )
+    );
+  // .fromTo(
+  //   '.faq__item',
+  //   {
+  //     scale: 0,
+  //   },
+  //   {
+  //     scale: 1,
+  //     duration: 0.6,
+  //     stagger: 0.2,
+  //     ease: 'power2.out',
+  //     scrollTrigger: {
+  //       trigger: '.faq',
+  //       start: 'top 80%',
+  //       end: 'bottom 60%',
+  //       scrub: true,
+  //       // once: true,
+  //     },
+  //   },
+  // )
+  gsap
     .fromTo(
       '.faq__item',
       {
-        scale: 0,
+        scale: 0.8,
+        opacity: 0,
       },
       {
         scale: 1,
-        duration: 0.6,
+        opacity: 1,
+        duration: 0.8,
         stagger: 0.2,
-        ease: 'power2.out',
+        ease: 'elastic.out(1, 0.5)',
         scrollTrigger: {
           trigger: '.faq',
-          start: 'top 80%',
-          end: 'bottom 60%',
+          start: 'top 90%',
+          end: 'bottom 70%',
           scrub: true,
-          once: true,
+          // once: true,
         },
       },
     )
+    // .fromTo(
+    //   '.faq__item',
+    //   {
+    //     opacity: 0,
+    //   },
+    //   {
+    //     opacity: 1,
+    //     duration: 1,
+    //     stagger: 0.2,
+    //     ease: 'power3.inOut',
+    //     scrollTrigger: {
+    //       trigger: '.faq',
+    //       start: 'top 85%',
+    //       end: 'bottom 65%',
+    //       scrub: true,
+    //       // once: true,
+    //     },
+    //   },
+    // )
     .fromTo(
       '.footer .title',
       {
@@ -1072,22 +1113,43 @@ mm.add('(max-width: 1510px)', () => {
     .fromTo(
       '.faq__item',
       {
-        scale: 0,
+        scale: 0.8,
+        opacity: 0,
       },
       {
         scale: 1,
-        duration: 0.6,
+        opacity: 1,
+        duration: 0.8,
         stagger: 0.2,
-        ease: 'power2.out',
+        ease: 'elastic.out(1, 0.5)',
         scrollTrigger: {
           trigger: '.faq',
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
-          once: true,
+          // once: true,
         },
       },
     )
+    // .fromTo(
+    //   '.faq__item',
+    //   {
+    //     scale: 0,
+    //   },
+    //   {
+    //     scale: 1,
+    //     duration: 0.6,
+    //     stagger: 0.2,
+    //     ease: 'power2.out',
+    //     scrollTrigger: {
+    //       trigger: '.faq',
+    //       start: 'top 80%',
+    //       end: 'bottom 60%',
+    //       scrub: true,
+    //       once: true,
+    //     },
+    //   },
+    // )
     .fromTo(
       '.footer .title',
       {
@@ -1419,22 +1481,43 @@ mm.add('(min-width: 2024px)', () => {
         },
       },
     )
+    // .fromTo(
+    //   '.faq__item',
+    //   {
+    //     scale: 0,
+    //   },
+    //   {
+    //     scale: 1,
+    //     duration: 0.6,
+    //     stagger: 0.2,
+    //     ease: 'power2.out',
+    //     scrollTrigger: {
+    //       trigger: '.faq',
+    //       start: 'top 80%',
+    //       end: 'bottom 60%',
+    //       scrub: true,
+    //       once: true,
+    //     },
+    //   },
+    // )
     .fromTo(
       '.faq__item',
       {
-        scale: 0,
+        scale: 0.8,
+        opacity: 0,
       },
       {
         scale: 1,
-        duration: 0.6,
+        opacity: 1,
+        duration: 0.8,
         stagger: 0.2,
-        ease: 'power2.out',
+        ease: 'elastic.out(1, 0.5)',
         scrollTrigger: {
           trigger: '.faq',
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
-          once: true,
+          // once: true,
         },
       },
     )
