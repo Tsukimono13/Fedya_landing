@@ -4,9 +4,8 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
 
-//loading bar
+// Loading bar
 function updateProgressBar() {
   const scrollTop = window.scrollY;
   const docHeight = document.body.scrollHeight - window.innerHeight;
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// carousel slider
+// Carousel slider and swiper
 const carouselContainer = document.querySelector('.carousel-container');
 const carousel = document.querySelector('.carousel');
 const swiperContainer = document.querySelector('.swiper');
@@ -141,7 +140,7 @@ window.addEventListener('resize', () => {
   initializeSwiper();
 });
 
-//tag animation
+// Tag animation
 gsap.registerPlugin(ScrollTrigger);
 
 const tags = document.querySelector('.tag-wrap');
@@ -214,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-//scroll to section
+// Scroll to section
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
     const sectionId = button.className.match(/menu__button--(\w+)/)[1];
@@ -253,7 +252,7 @@ glitchImages.forEach((image) => {
   glitchEffect(image);
 });
 
-//mobile menu
+// Mobile menu
 document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuButton = document.querySelector('.mobile-menu-button');
   const mobileMenu = document.querySelector('.mobile-menu');
@@ -336,7 +335,23 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMenuVisibility();
 });
 
-// preloader
+// Parallax on the main photo
+const personImage = document.querySelector('.presentation__person');
+
+function handleScroll() {
+  const scrollPosition = window.scrollY;
+  gsap.to(personImage, {
+    x: Math.sin(scrollPosition * 0.01) * 5,
+    y: Math.cos(scrollPosition * 0.01) * 1,
+    z: Math.cos(scrollPosition * 0.01) * 5,
+    duration: 0.1,
+    ease: 'power1.out',
+  });
+}
+
+window.addEventListener('scroll', handleScroll);
+
+// Preloader
 const tlLoader = gsap.timeline();
 const mm = gsap.matchMedia();
 
@@ -683,27 +698,7 @@ mm.add('(min-width: 1510px) and (max-width: 2024px)', () => {
           scrub: true,
         },
       },
-    );
-  // .fromTo(
-  //   '.faq__item',
-  //   {
-  //     scale: 0,
-  //   },
-  //   {
-  //     scale: 1,
-  //     duration: 0.6,
-  //     stagger: 0.2,
-  //     ease: 'power2.out',
-  //     scrollTrigger: {
-  //       trigger: '.faq',
-  //       start: 'top 80%',
-  //       end: 'bottom 60%',
-  //       scrub: true,
-  //       // once: true,
-  //     },
-  //   },
-  // )
-  gsap
+    )
     .fromTo(
       '.faq__item',
       {
@@ -721,29 +716,9 @@ mm.add('(min-width: 1510px) and (max-width: 2024px)', () => {
           start: 'top 90%',
           end: 'bottom 70%',
           scrub: true,
-          // once: true,
         },
       },
     )
-    // .fromTo(
-    //   '.faq__item',
-    //   {
-    //     opacity: 0,
-    //   },
-    //   {
-    //     opacity: 1,
-    //     duration: 1,
-    //     stagger: 0.2,
-    //     ease: 'power3.inOut',
-    //     scrollTrigger: {
-    //       trigger: '.faq',
-    //       start: 'top 85%',
-    //       end: 'bottom 65%',
-    //       scrub: true,
-    //       // once: true,
-    //     },
-    //   },
-    // )
     .fromTo(
       '.footer .title',
       {
@@ -1017,7 +992,6 @@ mm.add('(max-width: 1510px)', () => {
         },
       },
     )
-
     .fromTo(
       '.booking__work-img',
       {
@@ -1030,7 +1004,7 @@ mm.add('(max-width: 1510px)', () => {
         scrollTrigger: {
           trigger: '.booking',
           start: 'top 90%',
-          end: 'top 40%',
+          end: 'top 35%',
           scrub: true,
         },
       },
@@ -1127,50 +1101,9 @@ mm.add('(max-width: 1510px)', () => {
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
-          // once: true,
         },
       },
     )
-    // .fromTo(
-    //   '.faq__item',
-    //   {
-    //     scale: 0,
-    //   },
-    //   {
-    //     scale: 1,
-    //     duration: 0.6,
-    //     stagger: 0.2,
-    //     ease: 'power2.out',
-    //     scrollTrigger: {
-    //       trigger: '.faq',
-    //       start: 'top 80%',
-    //       end: 'bottom 60%',
-    //       scrub: true,
-    //       once: true,
-    //     },
-    //   },
-    // )
-    // .fromTo(
-    //   '.faq__item',
-    //   {
-    //     scale: 0.8,
-    //     opacity: 0,
-    //   },
-    //   {
-    //     scale: 1,
-    //     opacity: 1,
-    //     duration: 0.8,
-    //     stagger: 0.2,
-    //     ease: 'elastic.out(1, 0.5)',
-    //     scrollTrigger: {
-    //       trigger: '.faq',
-    //       start: 'top 80%',
-    //       end: 'bottom 60%',
-    //       scrub: true,
-    //       // once: true,
-    //     },
-    //   },
-    // )
     .fromTo(
       '.footer .title',
       {
@@ -1478,7 +1411,6 @@ mm.add('(min-width: 2024px)', () => {
           start: 'top 75%',
           end: 'bottom 70%',
           scrub: true,
-          // once: true,
         },
       },
     )
@@ -1502,25 +1434,6 @@ mm.add('(min-width: 2024px)', () => {
         },
       },
     )
-    // .fromTo(
-    //   '.faq__item',
-    //   {
-    //     scale: 0,
-    //   },
-    //   {
-    //     scale: 1,
-    //     duration: 0.6,
-    //     stagger: 0.2,
-    //     ease: 'power2.out',
-    //     scrollTrigger: {
-    //       trigger: '.faq',
-    //       start: 'top 80%',
-    //       end: 'bottom 60%',
-    //       scrub: true,
-    //       once: true,
-    //     },
-    //   },
-    // )
     .fromTo(
       '.faq__item',
       {
@@ -1538,7 +1451,6 @@ mm.add('(min-width: 2024px)', () => {
           start: 'top 80%',
           end: 'bottom 60%',
           scrub: true,
-          // once: true,
         },
       },
     )
@@ -1583,20 +1495,3 @@ mm.add('(min-width: 2024px)', () => {
       },
     );
 });
-
-// mm.revert();
-
-const personImage = document.querySelector('.presentation__person');
-
-function handleScroll() {
-  const scrollPosition = window.scrollY;
-  gsap.to(personImage, {
-    x: Math.sin(scrollPosition * 0.01) * 5,
-    y: Math.cos(scrollPosition * 0.01) * 1,
-    z: Math.cos(scrollPosition * 0.01) * 5,
-    duration: 0.1,
-    ease: 'power1.out',
-  });
-}
-
-window.addEventListener('scroll', handleScroll);
