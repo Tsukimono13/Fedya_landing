@@ -24,7 +24,8 @@
             margin-bottom: 12px;
             width: 100%;
 
-            h4 {
+            h4,
+            span {
                 font-size: clamp(24px, 2vw, 28px);
                 font-weight: 700;
                 line-height: clamp(28.8px, 2vw, 30.8px);
