@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Claude Code setup — useful on disk, not part of the project
+CLAUDE.md
+.agents/
