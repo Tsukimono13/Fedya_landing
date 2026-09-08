@@ -36,10 +36,9 @@
             }
         }
 
-        &____body.open {
-            max-height: 500px;
-        }
-
+        // The `.open` class is the state marker; the actual max-height is
+        // written inline by src/scripts/faq.js, because CSS cannot transition
+        // to `auto` and a fixed cap would clip the longer answers.
         &__body {
             max-height: 0;
             overflow: hidden;

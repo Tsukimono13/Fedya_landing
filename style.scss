@@ -1,13 +1,13 @@
-@import './src/styles/fonts';
-@import './src/styles/variables';
-@import './src/styles/global';
-@import './src/styles/reset';
-@import './src/styles/styles';
+@use './src/styles/fonts';
+@use './src/styles/variables';
+@use './src/styles/global';
+@use './src/styles/reset';
+@use './src/styles/styles';
 
-@import './src/styles/header';
-@import './src/styles/presentation';
-@import './src/styles/projects';
-@import './src/styles/about';
-@import './src/styles/booking';
-@import './src/styles/faq';
-@import './src/styles/footer';
+@use './src/styles/header';
+@use './src/styles/presentation';
+@use './src/styles/projects';
+@use './src/styles/about';
+@use './src/styles/booking';
+@use './src/styles/faq';
+@use './src/styles/footer';

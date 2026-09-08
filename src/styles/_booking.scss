@@ -114,7 +114,7 @@
                 gap: 36px;
                 margin-bottom: 36px;
 
-                h3 {
+                .booking__design__steps__number {
                     margin-bottom: 12px;
                 }
 
@@ -135,7 +135,8 @@
                 justify-content: center;
             }
 
-            h3 {
+            .booking__design__steps__number {
+                display: block;
                 font-size: clamp(44px, 4vw, 68px);
                 font-weight: 900;
                 line-height: clamp(48.4px, 4vw, 74.8px);

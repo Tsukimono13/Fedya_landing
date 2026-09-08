@@ -26,9 +26,24 @@
     &__details {
         padding-top: 95px;
 
+        // See the note in _projects.scss: the mask carries the gap, because a
+        // margin on the title itself is clipped by overflow: hidden.
         &__title {
-            height: 60px;
             overflow: hidden;
+            // See _projects.scss: padding keeps the letter tails inside the
+            // clip region, the margin is reduced to match.
+            padding-bottom: 6px;
+            padding-left: 6px;
+            margin-bottom: 22px;
+            margin-left: -6px;
+
+            @media screen and (max-width: 651px) {
+                margin-bottom: 14px;
+            }
+
+            .title {
+                margin-bottom: 0;
+            }
         }
 
         &__link {
@@ -75,7 +90,7 @@
                 height: 100%;
             }
 
-            @media (min-width: 651px) and (max-width: 1511px) {
+            @media (min-width: 651px) and (max-width: 1510px) {
                 width: 556px;
                 height: 745px;
             }
@@ -113,10 +128,5 @@
 }
 
 .title--about {
-    margin-bottom: 28px;
     color: var(--link-btn-color);
-
-    @media screen and (max-width: 651px) {
-        margin-bottom: 20px;
-    }
 }

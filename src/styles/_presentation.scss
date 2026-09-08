@@ -28,10 +28,6 @@
             left: 194px;
         }
 
-        &--third {
-            top: 472px;
-        }
-
         &--fourth {
             top: 540px;
         }
@@ -46,25 +42,19 @@
 
         &--first::before,
         &--first::after {
-            background: url('assets/images/glitches/glitch_1.png') no-repeat center/cover;
+            background: url('/assets/images/glitches/glitch_1.png') no-repeat center/cover;
             animation: rgb-split-1 1s infinite;
         }
 
         &--second::before,
         &--second::after {
-            background: url('assets/images/glitches/glitch_2.png') no-repeat center/cover;
+            background: url('/assets/images/glitches/glitch_2.png') no-repeat center/cover;
             animation: rgb-split-2 1.2s infinite;
-        }
-
-        &--third::before,
-        &--third::after {
-            background: url('assets/images/glitches/glitch_3.png') no-repeat center/cover;
-            animation: rgb-split-3 1.4s infinite;
         }
 
         &--fourth::before,
         &--fourth::after {
-            background: url('assets/images/glitches/glitch_4.png') no-repeat center/cover;
+            background: url('/assets/images/glitches/glitch_4.png') no-repeat center/cover;
             animation: rgb-split-4 1.4s infinite;
         }
 
@@ -99,16 +89,6 @@
         &--second::after {
             transform: translate(-3px, 0);
             filter: drop-shadow(0 0 5px yellow);
-        }
-
-        &--third::before {
-            transform: translate(4px, 0);
-            filter: drop-shadow(0 0 5px purple);
-        }
-
-        &--third::after {
-            transform: translate(-4px, 0);
-            filter: drop-shadow(0 0 5px orange);
         }
 
         &--fourth::before {

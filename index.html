@@ -2,30 +2,101 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/icon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-      rel="stylesheet"
-    >
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
-    >
     <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Theo Ivanov</title>
+    <link rel="icon" type="image/png" href="/new-icon.png">
+
+    <!-- Canonical — the page is served at /seattlebooking/; usa.tattoo root
+         redirects here. Keep this URL in sync with public/sitemap.xml and the
+         absolute og:/twitter: image URLs below. -->
+    <link rel="canonical" href="https://usa.tattoo/seattlebooking/">
+
+    <!-- LCP: the hero portrait. Filled in by src/scripts/site-images.js with
+         the AVIF variant (the PNG in dev), so it starts downloading before the
+         CSS/JS bundle is parsed. -->
+    <!-- PRELOAD:hero -->
+
+    <title>Theo Ivanov — Tattoo Artist | Seattle &amp; New York</title>
+    <meta
+      name="description"
+      content="Theo Ivanov — tattoo artist working across the USA from Seattle, WA. Realistic dark and horror tattoos with detailed black-and-grey style. Book a session via Instagram, WhatsApp or Telegram."
+    >
+
+    <!-- Open Graph (Facebook, Telegram, LinkedIn previews).
+         og:image MUST be an absolute URL with scheme + host — scrapers do not
+         resolve relative paths, a relative value yields no preview at all. -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Theo Ivanov Tattoo">
+    <meta property="og:url" content="https://usa.tattoo/seattlebooking/">
+    <meta property="og:title" content="Theo Ivanov — Tattoo Artist">
+    <meta
+      property="og:description"
+      content="Realistic dark and horror tattoos. Based in Seattle, WA — working across the USA."
+    >
+    <meta
+      property="og:image"
+      content="https://usa.tattoo/seattlebooking/assets/images/fedor_photo.png"
+    >
+    <meta property="og:image:width" content="1317">
+    <meta property="og:image:height" content="1659">
+    <meta property="og:image:alt" content="Theo Ivanov, tattoo artist">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Theo Ivanov — Tattoo Artist">
+    <meta
+      name="twitter:description"
+      content="Realistic dark and horror tattoos. Based in Seattle, WA — working across the USA."
+    >
+    <meta
+      name="twitter:image"
+      content="https://usa.tattoo/seattlebooking/assets/images/fedor_photo.png"
+    >
+    <meta name="twitter:image:alt" content="Theo Ivanov, tattoo artist">
+
+    <!-- Schema.org Person — helps Google Rich Results / Knowledge Panel -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Theo Ivanov",
+        "jobTitle": "Tattoo Artist",
+        "image": "https://usa.tattoo/seattlebooking/assets/images/fedor_photo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Seattle",
+          "addressRegion": "WA",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://www.instagram.com/iftattoo/",
+          "https://t.me/rispit"
+        ]
+      }
+    </script>
+
+    <!-- Schema.org FAQPage — generated from src/data/faq.js at build time -->
+    <!-- FAQ_JSON_LD -->
+
   </head>
   <body class="main_body">
     <div class="preloading">
-      <img src="assets/icons/Logo.svg" alt="logo" class="preloading__logo" >
+      <img src="assets/icons/Logo.svg" alt="" class="preloading__logo" >
+      <!-- Counter is driven by the preloader timeline (step 2 in
+           src/scripts/preloader-timeline.js) and lands on 100 exactly as the
+           overlay starts sliding away. Hidden from assistive tech: rapidly
+           changing digits are noise, and the page behind is already there. -->
+      <p class="preloading__counter" aria-hidden="true">
+        <span class="preloading__counter__value" data-preloader-counter>0</span
+        ><span class="preloading__counter__unit">%</span>
+      </p>
     </div>
     <div>
       <!-- Header -->
       <header id="header">
         <div class="loading"></div>
         <div class="mobile-menu-container">
-          <button class="mobile-menu-button">
+          <button class="mobile-menu-button" aria-label="Toggle menu" aria-expanded="false">
             <span class="menu-icon">
               <span></span>
               <span></span>
@@ -34,80 +105,39 @@
           </button>
           <img
             src="assets/icons/Logo.svg"
-            alt="logo"
+            alt=""
             class="mobile-header__logo"
           >
-          <ul class="mobile-header__socials">
-            <li>
-              <a
-                href="https://www.instagram.com/iftattoo/"
-                target="_blank"
-                class="menu__link menu__link--inst"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://api.whatsapp.com/send/?phone=13477512173"
-                target="_blank"
-                class="menu__link menu__link--watsapp"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://t.me/rispit"
-                target="_blank"
-                class="menu__link menu__link--tg"
-              ></a>
-            </li>
-          </ul>
+          <!-- SOCIALS:mobile-header -->
         </div>
         <div class="container">
           <!-- left menu -->
           <nav class="menu menu--left">
-            <button class="menu__button menu__button--faq">FAQ</button>
-            <button class="menu__button menu__button--session">
-              How to book
-            </button>
-            <button class="menu__button menu__button--me">About Me</button>
-            <button class="menu__button menu__button--project">
-              My Projects
-            </button>
+            <button
+              class="menu__button menu__button--faq"
+              data-scroll-to="faq"
+            >FAQ</button>
+            <button
+              class="menu__button menu__button--session"
+              data-scroll-to="session"
+            >How to book</button>
+            <button
+              class="menu__button menu__button--me"
+              data-scroll-to="me"
+            >About Me</button>
+            <button
+              class="menu__button menu__button--project"
+              data-scroll-to="project"
+            >My Projects</button>
           </nav>
           <!-- right menu -->
-          <nav class="menu menu--right">
-            <ul>
-              <li>
-                <a
-                  href="https://www.instagram.com/iftattoo/"
-                  target="_blank"
-                  title="Instagram"
-                  class="menu__link menu__link--inst scrolled"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="https://api.whatsapp.com/send/?phone=13477512173&text&type=phone_number&app_absent=0"
-                  target="_blank"
-                  title="Whatsapp"
-                  class="menu__link menu__link--watsapp scrolled"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="https://t.me/rispit"
-                  target="_blank"
-                  title="Telegram"
-                  class="menu__link menu__link--tg scrolled"
-                ></a>
-              </li>
-            </ul>
-          </nav>
+          <nav class="menu menu--right"><!-- SOCIALS:right-menu --></nav>
         </div>
         <!-- mobile menu -->
         <div class="mobile-menu hidden">
           <img
             src="assets/icons/Logo.svg"
-            alt="logo"
+            alt=""
             class="mobile-menu__logo"
           >
           <ul class="mobile-menu__links">
@@ -119,35 +149,11 @@
           <a
             href="https://www.instagram.com/iftattoo/"
             target="_blank"
+            rel="noopener noreferrer"
             class="common__link common__link--presentation"
             >CONTACT ME NOW</a
           >
-          <ul class="mobile-menu__socials">
-            <li>
-              <a
-                href="https://www.instagram.com/iftattoo/"
-                target="_blank"
-                title="Instagram"
-                class="menu__link menu__link--inst"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://api.whatsapp.com/send/?phone=13477512173&text&type=phone_number&app_absent=0"
-                target="_blank"
-                title="Whatsapp"
-                class="menu__link menu__link--watsapp"
-              ></a>
-            </li>
-            <li>
-              <a
-                href="https://t.me/rispit"
-                target="_blank"
-                title="Telegram"
-                class="menu__link menu__link--tg"
-              ></a>
-            </li>
-          </ul>
+          <!-- SOCIALS:mobile-menu -->
         </div>
       </header>
 
@@ -157,7 +163,7 @@
           <div class="presentation__glitches presentation__glitches--first">
             <img
               src="assets/images/glitches/glitch_1.png"
-              alt="glitch"
+              alt=""
               class="presentation__glitch"
               data-speed="0.1"
             >
@@ -165,7 +171,7 @@
           <div class="presentation__glitches presentation__glitches--second">
             <img
               src="assets/images/glitches/glitch_2.png"
-              alt="glitch"
+              alt=""
               class="presentation__glitch"
               data-speed="0.8"
             >
@@ -173,7 +179,7 @@
           <div class="presentation__glitches presentation__glitches--fourth">
             <img
               src="assets/images/glitches/glitch_4.png"
-              alt="glitch"
+              alt=""
               class="presentation__glitch"
               data-speed="0.2"
             >
@@ -181,7 +187,7 @@
           <div class="container">
             <img
               src="assets/icons/Logo.svg"
-              alt="logo"
+              alt=""
               class="presentation__logo"
             >
             <div class="presentation__details">
@@ -200,15 +206,21 @@
                 <a
                   href="https://www.instagram.com/iftattoo/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="common__link common__link--presentation"
                   >CONTACT ME NOW</a
                 >
               </div>
+              <!-- LCP element — eager + high priority, matched by the
+                   <link rel="preload"> in <head>. Never mark this lazy. -->
               <img
                 src="assets/images/fedor_photo.png"
                 alt="Theo Ivanov"
                 class="presentation__person"
-                loading="lazy"
+                width="1317"
+                height="1659"
+                fetchpriority="high"
+                decoding="async"
               >
             </div>
           </div>
@@ -236,7 +248,7 @@
           <div class="projects__content container">
             <div class="projects__details">
               <div class="projects__details__title">
-                <h3 class="title title--projects">My Projects</h3>
+                <h2 class="title title--projects">My Projects</h2>
               </div>
               <p class="projects__details__text">
                 People come to me for high-quality realistic tattoos.
@@ -250,157 +262,38 @@
                 <a
                   href="https://www.instagram.com/iftattoo/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="common__link common__link--projects"
                   >SEE MORE WORK</a
                 >
               </div>
             </div>
-            <!-- Projects Carousel -->
+            <!-- Projects Carousel (desktop). Items are inlined at build time
+                 by src/scripts/works-images.js from src/data/works.js. -->
             <div class="carousel">
-              <div class="carousel-container">
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_1.png" alt="work 1">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_2.png" alt="work 2">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_13.png" alt="work 13">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_3.png" alt="work 3">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_4.png" alt="work 4">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_5.png" alt="work 5">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_6.png" alt="work 6">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_7.png" alt="work 7">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_8.png" alt="work 8">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_9.png" alt="work 9">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_10.png" alt="work 10">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_11.png" alt="work 11">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_12.png" alt="work 12">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_14.png" alt="work 14">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_15.png" alt="work 15">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_16.png" alt="work 16">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_17.png" alt="work 17">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_18.png" alt="work 18">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_19.png" alt="work 19">
-                </div>
-                <div class="carousel-item">
-                  <img src="assets/images/works/work_20.png" alt="work 20">
-                </div>
-              </div>
-              <button class="prev">
-                <img src="assets/icons/left_arrow.svg" alt="previous">
+              <div class="carousel-container"><!-- WORKS:carousel --></div>
+              <button class="prev" aria-label="Previous work">
+                <img src="assets/icons/left_arrow.svg" alt="">
               </button>
-              <button class="next">
-                <img src="assets/icons/right_arrow.svg" alt="next">
+              <button class="next" aria-label="Next work">
+                <img src="assets/icons/right_arrow.svg" alt="">
               </button>
             </div>
-            <!-- Projects mobile swiper -->
+            <!-- Projects mobile swiper — same source, same build-time inlining. -->
             <div class="swiper">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_1.png" alt="work 1">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_2.png" alt="work 2">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_13.png" alt="work 12">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_3.png" alt="work 3">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_4.png" alt="work 4">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_5.png" alt="work 5">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_6.png" alt="work 6">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_7.png" alt="work 7">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_8.png" alt="work 8">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_9.png" alt="work 9">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_10.png" alt="work 10">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_11.png" alt="work 11">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_12.png" alt="work 12">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_14.png" alt="work 14">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_15.png" alt="work 15">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_16.png" alt="work 16">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_17.png" alt="work 17">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_18.png" alt="work 18">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_19.png" alt="work 19">
-                </div>
-                <div class="swiper-slide">
-                  <img src="assets/images/works/work_20.png" alt="work 20">
-                </div>
-              </div>
-              <button class="custom-prev">
-                <img src="assets/icons/left_arrow.svg" alt="previous">
+              <div class="swiper-wrapper"><!-- WORKS:swiper --></div>
+              <button class="custom-prev" aria-label="Previous work">
+                <img src="assets/icons/left_arrow.svg" alt="">
               </button>
-              <button class="custom-next">
-                <img src="assets/icons/right_arrow.svg" alt="next">
+              <button class="custom-next" aria-label="Next work">
+                <img src="assets/icons/right_arrow.svg" alt="">
               </button>
             </div>
             <a
               href="https://www.instagram.com/iftattoo/"
               class="common__link common__link--mobile"
               target="_blank"
+              rel="noopener noreferrer"
               >SEE MORE WORK</a
             >
           </div>
@@ -411,7 +304,7 @@
           <div class="about__content container">
             <div class="about__details">
               <div class="about__details__title">
-                <h3 class="title title--about">About Me</h3>
+                <h2 class="title title--about">About Me</h2>
               </div>
               <p class="about__details__text">
                 What’s up, Seattle! I’m Theo, a tattoo artist from Europe. I now
@@ -431,6 +324,7 @@
                   href="https://www.instagram.com/iftattoo/"
                   class="about__link"
                   target="_blank"
+                  rel="noopener noreferrer"
                   >CONTACT ME NOW</a
                 >
               </div>
@@ -438,7 +332,7 @@
             <div class="about__person-container">
               <img
                 src="assets/images/about_Fedya_back.png"
-                alt="Theo Ivanov background"
+                alt=""
                 class="about__person about__person--back"
                 width="586"
                 height="775"
@@ -464,10 +358,11 @@
               alt="Theo at work"
               class="booking__work-img"
               loading="lazy"
+              width="672"
               height="672"
             >
             <div class="booking__steps">
-              <h3 class="title title--booking">How to book a session</h3>
+              <h2 class="title title--booking">How to book a session</h2>
               <ul class="booking__list">
                 <li class="booking__list__item">
                   Text me and describe your idea.
@@ -485,6 +380,7 @@
               <a
                 href="https://www.instagram.com/iftattoo/"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="common__link common__link--booking"
                 >Get a free consultation</a
               >
@@ -493,22 +389,22 @@
           <div class="booking__design container">
             <img
               src="assets/icons/angles/angle-top-left.svg"
-              alt="decor angle"
+              alt=""
               class="booking__design__angle booking__design__angle--top-left"
             >
             <img
               src="assets/icons/angles/angle-top-right.svg"
-              alt="decor angle"
+              alt=""
               class="booking__design__angle booking__design__angle--top-right"
             >
             <img
               src="assets/icons/angles/angle-bottom-left.svg"
-              alt="decor angle"
+              alt=""
               class="booking__design__angle booking__design__angle--bottom-left"
             >
             <img
               src="assets/icons/angles/angle-bottom-right.svg"
-              alt="decor angle"
+              alt=""
               class="booking__design__angle booking__design__angle--bottom-right"
             >
             <h3 class="title title--design">
@@ -516,7 +412,7 @@
             </h3>
             <div class="booking__design__steps">
               <div class="booking__design__steps__item">
-                <h3>01</h3>
+                <span class="booking__design__steps__number">01</span>
                 <h4>DESCRIBE YOUR IDEA IN DETAIL</h4>
                 <p>
                   Tell me about your idea and where you want the tattoo. Mention
@@ -525,7 +421,7 @@
                 </p>
               </div>
               <div class="booking__design__steps__item">
-                <h3>02</h3>
+                <span class="booking__design__steps__number">02</span>
                 <h4>SEND REFERENCES YOU LIKE</h4>
                 <p>
                   These can be photos of similar tattoos, sketches, or artworks.
@@ -535,7 +431,7 @@
             </div>
             <div class="booking__design__steps">
               <div class="booking__design__steps__item">
-                <h3>03</h3>
+                <span class="booking__design__steps__number">03</span>
                 <h4>SCHEDULE A PERSONAL CONSULTATION</h4>
                 <p>
                   How much does it cost? It's free! This helps us get better
@@ -544,7 +440,7 @@
                 </p>
               </div>
               <div class="booking__design__steps__item">
-                <h3>04</h3>
+                <span class="booking__design__steps__number">04</span>
                 <h4>CREATE THE DESIGN WITH ME</h4>
                 <p>
                   We will have a one-hour consultation, during which we will lay
@@ -560,6 +456,7 @@
               href="https://docs.google.com/forms/d/e/1FAIpQLSdxAbDVsJ-ijzbxOv56CpFi6OBY3Bo_FFWmZ6uvqVROQocOnw/viewform?usp=sf_link"
               class="common__link common__link--design"
               target="_blank"
+              rel="noopener noreferrer"
               >SUBMIT FORM</a
             >
           </div>
@@ -569,230 +466,9 @@
         <section class="faq" id="faq">
           <div class="faq__content container">
             <div class="faq__title">
-              <h3 class="title title--faq">FAQ</h3>
+              <h2 class="title title--faq">FAQ</h2>
             </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>How to prepare for the session</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body faq__item__body--flex">
-                <p>
-                  A tattoo is a stress and trauma for the body. So, I recommend
-                  choosing a session date with the healing process in mind.
-                </p>
-                <p>
-                  Pick a day when you have 1-2 days off afterward to let the
-                  tattoo start healing. Avoid physical exertion for a week.
-                </p>
-                <p>
-                  Before the session, ensure you get a good night's sleep, have
-                  breakfast, and avoid alcohol.
-                </p>
-                <p>
-                  It's also recommended to exfoliate or scrub the skin with a
-                  washcloth the day before the session to remove dead skin
-                  cells.
-                </p>
-                <p class="faq__item__body__text faq__item__body__text--last">
-                  Bring comfortable clothing. For example, a sleeveless shirt
-                  for a tattoo on your arm or shorts for work on your leg.
-                  Choose clothes that you don't mind getting dirty.
-                </p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>How long do large projects take?</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body">
-                <p>
-                  The time required for a tattoo is quite unpredictable since it
-                  involves a drawing process. It depends on your size, skin
-                  quality, and the complexity of the project. However, I can
-                  provide some rough estimates based on my experience:
-                </p>
-                <div class="faq__item__body__steps">
-                  <p>Forearm - 1-2 sessions</p>
-                  <p>Shin - 2-3 sessions</p>
-                  <p>Shoulder - 2-3 sessions</p>
-                  <p>Half sleeve - 4-5 sessions</p>
-                  <p>Full sleeves, back, and torso - 8-12 sessions</p>
-                </div>
-                <p class="faq__item__body__text faq__item__body__text--last">
-                  Again, everything is individual and will be discussed during
-                  the initial consultation.
-                </p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>What are the contraindications?</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body">
-                <p>Absolute contraindications:</p>
-                <ul class="faq__item__body__list">
-                  <li>Blood clotting disorders</li>
-                  <li>Malignant tumors</li>
-                  <li>HIV</li>
-                  <li>Epilepsy</li>
-                  <li>High blood pressure</li>
-                  <li>Serious heart diseases</li>
-                  <li>Allergic reactions to anesthetics</li>
-                  <li>Rheumatoid arthritis</li>
-                  <li>Exacerbation of skin diseases</li>
-                  <li>Type 1 diabetes</li>
-                  <li>Pregnancy</li>
-                </ul>
-                <p>Relative contraindications:</p>
-                <ul class="faq__item__body__list">
-                  <li>Breastfeeding</li>
-                  <li>Hepatitis</li>
-                  <li>Type 2 diabetes</li>
-                  <li>Menstruation</li>
-                </ul>
-              </div>
-            </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>Pricing and deposit</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body spaced">
-                <p>
-                  I charge hourly and work with a timer, counting only the
-                  actual tattooing time, excluding preparation and breaks. The
-                  hourly rate is $230, and the total price is calculated at the
-                  end of the session. On average, for larger pieces, it takes
-                  about 5 hours a day. It's important to understand that each
-                  project is unique, and the time spent can vary from client to
-                  client.
-                </p>
-                <p>
-                  At this moment, we only accept cash. Payments for tattoo
-                  sessions are due immediately at the end of each session.
-                </p>
-                <p>
-                  A deposit of $100 is required to confirm your appointment.
-                  Deposits are non-refundable. The deposit can be paid in cash
-                  or online via Zelle, Venmo, or PayPal.
-                </p>
-                <p>
-                  The deposit serves to reserve all your booking dates and will
-                  be applied to the final tattoo session if the project requires
-                  multiple sessions. If it is a single session, it will be
-                  applied to that instead.
-                </p>
-                <p>
-                  If you need to change the date of your appointment due to
-                  unforeseen circumstances, you must let us know at least 3 days
-                  prior to the session so we can rearrange our schedules. A new
-                  deposit will be required to continue working together if you
-                  cancel or reschedule with less than 3 days’ notice. You can
-                  reschedule your appointment only once without losing your
-                  deposit.
-                </p>
-                <p class="faq__item__body__text faq__item__body__text--last">
-                  If you do not show up for the appointment - you lose your
-                  deposit and we will not be able to work together. In paying
-                  your deposit, you agree to the entire policy above and agree
-                  that the deposit cannot be refunded for any reason whatsoever.
-                </p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>How to care for a tattoo</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body spaced">
-                <p>
-                  Since a tattoo is a large wound, there's a risk of infection.
-                  Cover it with absorbing pads when going outside and when
-                  sleeping. At home, you can skip the absorbing pad unless you
-                  have pets; in that case, keep it covered.
-                </p>
-                <div>
-                  <p>Here's the care routine:</p>
-                  <ol class="care-routine">
-                    <li>
-                      When you get home after the session, remove the absorbing
-                      pad, wash the tattoo with warm water, and gently pat dry
-                      the shiny areas with plasma using a paper towel.
-                    </li>
-                    <li>Let the tattoo air dry for about half an hour.</li>
-                    <li>
-                      Apply a thin layer of cream (a thick layer will prevent
-                      the skin from breathing and slow down healing).
-                    </li>
-                    <li>
-                      Before sleeping and going outside, cover the tattoo with
-                      an absorbing pad over the cream.
-                    </li>
-                    <li>
-                      While at home, keep an eye on the tattoo. If plasma
-                      accumulates over the cream, repeat the cleaning and drying
-                      process.
-                    </li>
-                  </ol>
-                </div>
-                <p>
-                  After two nights, plasma discharge should stop. This means you
-                  can stop using absorbing pads. From this point, apply cream
-                  more frequently to prevent the tattoo from drying out. Wear
-                  loose clothing that you don't mind getting stained with cream.
-                </p>
-                <p>
-                  After 4-5 days, the tattoo will start peeling. Don’t pick at
-                  the peeling skin, and continue applying cream until it's fully
-                  healed.
-                </p>
-                <p>
-                  Once the tattoo has finished peeling, continue to moisturize
-                  it with regular lotion for up to a month.
-                </p>
-                <div>
-                  <p>For 1-2 weeks during the healing process, avoid:</p>
-                  <ul class="faq__item__body__list">
-                    <li>Tanning beds</li>
-                    <li>Saunas</li>
-                    <li>Baths</li>
-                    <li>Sunbathing</li>
-                    <li>Physical activities</li>
-                    <li>Swimming in pools and open water</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>Can I purchase a gift certificate?</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body">
-                <p class="faq__item__body__text faq__item__body__text--last">
-                  Yes, you can purchase a gift certificate for a tattoo from me
-                  as a gift for any occasion. Terms of use: It can be used by
-                  any adult who does not have any contraindications. The
-                  certificate can be used within 6 months from the date of
-                  purchase. The amount on the certificate can be any value.
-                </p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <button class="faq__item__header faq__toggle">
-                <span>How to get to the studio</span>
-                <img src="assets/icons/faq_icon.svg" alt="Open icon">
-              </button>
-              <div class="faq__item__body">
-                <p class="faq__item__body__text faq__item__body__text--last">
-                  The studio is still under renovation. Opening soon! For the
-                  address, please send me a DM.
-                </p>
-              </div>
-            </div>
+            <!-- FAQ_ITEMS -->
           </div>
         </section>
       </main>
@@ -807,26 +483,7 @@
           class="common__link common__link--footer"
           >Get a free consultation</a
         >
-        <div class="footer__links">
-          <a
-            href="https://www.instagram.com/iftattoo/"
-            target="_blank"
-            title="Instagram"
-            class="menu__link menu__link--inst"
-          ></a>
-          <a
-            href="https://api.whatsapp.com/send/?phone=13477512173&text&type=phone_number&app_absent=0"
-            target="_blank"
-            title="Whatsapp"
-            class="menu__link menu__link--watsapp"
-          ></a>
-          <a
-            href="https://t.me/rispit"
-            target="_blank"
-            title="Telegram"
-            class="menu__link menu__link--tg"
-          ></a>
-        </div>
+        <div class="footer__links"><!-- SOCIALS:footer --></div>
         <div class="footer__creators">
           <p>made by</p>
           <a href="https://t.me/psybolord"
@@ -836,9 +493,6 @@
         </div>
       </footer>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

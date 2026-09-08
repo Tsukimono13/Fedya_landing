@@ -17,6 +17,13 @@ img {
     user-select: none;
 }
 
+/* <picture> is only a format-negotiation wrapper added at build time by
+   site-images.js / works-images.js. display:contents keeps it out of the box
+   tree so the <img> stays the flex/grid item its layout was written for. */
+picture {
+    display: contents;
+}
+
 button {
     cursor: pointer;
 }

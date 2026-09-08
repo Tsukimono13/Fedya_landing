@@ -1,13 +1,35 @@
+/* Self-hosted Roboto, latin subset only. One variable file covers every
+   weight the site uses (400/500/700/800/900) — five static instances would be
+   ~110 KB against 42 KB here. Vite resolves the bare package path and emits it
+   as a hashed asset. */
 @font-face {
-    font-family: "Hatsch Sans";
-    src: url("/assets/fonts/hatschsanspersonaluseonlyregular-pkezg.otf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'Roboto';
+  src: url('@fontsource-variable/roboto/files/roboto-latin-wght-normal.woff2')
+    format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: "Long Shot";
-    src: url("/assets/fonts/Long_Shot.ttf") format("opentype");
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'Hatsch Sans';
+  src: url('/assets/fonts/hatschsanspersonaluseonlyregular-pkezg.otf')
+    format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  /* Render fallback text immediately instead of blocking on the font file
+       (FOIT). Without this the headline is invisible until the .otf lands,
+       which pushes out FCP/LCP. */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Long Shot';
+  src: url('/assets/fonts/Long_Shot.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }

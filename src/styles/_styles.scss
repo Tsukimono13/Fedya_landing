@@ -27,4 +27,53 @@
         transform: translate(-50%, -50%);
         z-index: 11;
     }
+
+    // Loading counter under the logo. Positioned off the same 50%/50% anchor
+    // as the logo rather than in flow, so the logo's GSAP scale pulse cannot
+    // shift it. 66px clears the logo's half-height, +24px of breathing room.
+    &__counter {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        // Nudged a touch right of dead centre — that is where it reads as
+        // centred under the logo, whose own ink sits slightly left of its box.
+        transform: translateX(calc(-50% + 0.36em));
+        margin-top: 90px;
+        z-index: 11;
+        white-space: nowrap;
+
+        // Long Shot — the hero <h1> face, so the first thing on screen is
+        // already in the site's voice. NOT "Hatsch Sans": that one is the
+        // personal-use demo cut, and its digit glyphs are a "PERSONAL USE
+        // ONLY" watermark rather than numerals.
+        font-family: "Long Shot", sans-serif;
+        font-size: clamp(24px, 2.6vw, 36px);
+        line-height: 1;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        color: var(--main-text-color);
+        font-variant-numeric: tabular-nums;
+        // The timeline fades this in; without the initial 0 it would flash at
+        // full opacity for one frame before the tween takes over.
+        opacity: 0;
+
+        // The number sits centred inside a fixed three-digit slot rather than
+        // being zero-padded: it reads as "7%", not "007%", the % sign never
+        // moves as the count crosses 10 and 100, and — because it grows
+        // outwards from the middle of the slot instead of leftwards from its
+        // right edge — the digits stay put under the logo the whole way up.
+        // Right-aligning them instead put "7%" 6.5px right of the logo and
+        // "100%" 2px left of it.
+        &__value {
+            display: inline-block;
+            min-width: 3ch;
+            text-align: center;
+        }
+
+        &__unit {
+            font-size: 0.55em;
+            opacity: 0.55;
+            margin-left: 0.15em;
+        }
+    }
 }
